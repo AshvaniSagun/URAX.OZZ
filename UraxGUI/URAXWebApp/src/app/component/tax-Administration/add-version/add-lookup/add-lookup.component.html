@@ -1,0 +1,251 @@
+											<!--Tab2-->
+<div class="sub-content">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#home">Group Tables</a></li>
+        <li><a data-toggle="tab" href="#menu2"  *ngIf="taxstatus" (click)="addnewlookup()">New</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade in active">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding table-responsive" style="margin-top: -2px; margin-bottom: 10px;">
+                <label style="width: 100%;">Select Group</label>
+                <select  *ngIf="!editlookupgroupname" class="styled-select" [(ngModel)]="lookupgroupnameid" style="width: 300px!important" (change)="loadlookupdetals($event.target.value)">
+                    <option [value]="0">Please select Look-up Group </option>
+                    <option *ngFor="let grup of LookuoGroup" value="{{grup.id}}">{{grup.name}}</option>
+                </select>
+                <input type="text"  *ngIf="editlookupgroupname"  [(ngModel)]="lokupgroupnameupdate"  style="width: 300px!important" >
+                <div  *ngIf="taxstatus" >
+                    <a href="javascript:void(0)" *ngIf="!editlookupgroupname" (click)="Editlookupgroupname(lookupgroupnameid)" style="margin: 0px 10px;" title="Edit LookupGroup" class="fa fa-pencil" aria-hidden="true"></a>
+                    <a href="javascript:void(0)" *ngIf="editlookupgroupname" (click)="Updatelookupgroupname(lookupgroupnameid,lokupgroupnameupdate)" title="Update LookupGroup" class="fa fa-check" aria-hidden="true"></a>
+                    <a href="javascript:void(0)" *ngIf="!editlookupgroupname" (click)="Deletelookupgroupname(lookupgroupnameid)" style="margin: 4px -4px;" title="Delete LookupGroup " class="fa fa-trash" aria-hidden="true"></a>
+                    <a href="javascript:void(0)" *ngIf="editlookupgroupname" (click)="Cancellookupgroup()" title="Cancel LookupGroup" class="fa fa-close" aria-hidden="true"></a>
+                </div>
+            </div>
+            <div class="col-sm-11 col-xs-11 col-md-11 col-lg-11 no-padding table-responsive table-newwidth" style="margin-top: -2px; margin-bottom: 10px;height:200px;overflow:auto;" >
+                <table class="table table-striped table-bordered">
+                    <thead class="table-inverse">
+                        <tr>
+                            <th class="actions" *ngFor="let column of _lookupdetailsheader">
+                                {{column.variableName}}
+                            </th>
+                            <th  *ngIf="taxstatus" class="actions">Actions</th>
+                            <!--<th>Created on</th>
+                            <th>Created by</th>
+                            <th>Updated on</th>
+                            <th>Updated by</th>-->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of _lookupdetailsdetails">
+                            <td *ngFor="let column of _lookupdetailsheader">
+                                <span *ngIf="!data.showEdit">{{data[column.variableName] }}</span>
+                                <input style="width:150px!important" type="text" [(ngModel)]="data[column.variableName]" *ngIf="data.showEdit" class="">
+                            </td>
+                            <td  *ngIf="taxstatus">
+                                <a *ngIf="data.showsave" href="javascript:void(0)"
+                                   (click)="savelookupgroupdata(data)" title="Save LookupGroup Data"
+                                   class="fa fa-save" aria-hidden="true"></a>
+                                <a href="javascript:void(0)" *ngIf="!data.showEdit"
+                                   (click)="Editlookupgroup(data)" title="Edit LookupGroup Data"
+                                   class="fa fa-pencil" aria-hidden="true"></a>
+                                <a href="javascript:void(0)" title="Delete LookupGroup Data"
+                                   (click)="Deletelookupgroupdata(data)" *ngIf="!data.cancel"
+                                   class="fa fa-trash" aria-hidden="true"></a>
+                                <a href="javascript:void(0)" *ngIf="data.showupdate"
+                                   (click)="Updatelookupgroupdata(data)" title="Update LookupGroup Data"
+                                   class="fa fa-check" aria-hidden="true"></a>
+                                <a href="javascript:void(0)" *ngIf="data.cancel"
+                                   (click)="Cancellookupgroupdata(data)" title="Cancel"
+                                   class="fa fa-close" aria-hidden="true"></a>
+                            </td>
+                            <!--<td>
+                                <span>  {{ column.createdOn | date: 'yyyy-MM-dd' }} </span>
+                            </td>
+                            <td>
+                                <span>  {{ column.createdBy }} </span>
+                            </td>
+                            <td>
+                                <span>  {{ column.updatedOn | date: 'yyyy-MM-dd' }} </span>
+                            </td>
+
+                            <td>
+                                <span>  {{ column.updatedBy }} </span>
+                            </td>-->
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 expand-newwidth" style=" margin-top:55px;">
+                
+                    <a href="javascript:void(0)" title="Add LookupGroup"  *ngIf="taxstatus" (click)="Addnewlookupgroup()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                
+            </div>
+
+            <div class="col-sm-11 col-xs-11 col-md-11 col-lg-11 no-padding table-responsive table-newwidth" style="height:200px;overflow:auto;">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-inverse">
+                        <tr>
+                            <th>Variable Name</th>
+                            <th>Variable Type</th>
+                            <th class="actions" *ngIf="taxstatus">Actions</th>
+                            <!--<th>Created on</th>
+                            <th>Created by</th>-->
+                            <th>Updated on</th>
+                            <th>Updated by</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of _lookupdetailsvariable">
+                            <td>
+                                <span *ngIf="!data.showEdit">{{ data.variableName }}</span>
+                                <div class="styled-select styled-new" *ngIf="data.showEdit">
+                                    <select class="styled-select" [(ngModel)]="data.variableId">
+                                        <option [value]="0">Please select Variable Name</option>
+                                        <option *ngFor="let code of _lookupdparameterdd" [ngValue]="code.variableId">{{code.variableName}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <span *ngIf="!data.showEdit">{{ data.lookUpRangeType }}</span>
+                                <div class="styled-select styled-new" *ngIf="data.showEdit">
+                                    <select class="styled-select" [(ngModel)]="data.lookUpRangeId">
+                                        <option [value]="0">Please select Variable Type</option>
+                                        <option *ngFor="let code of _lookuprangetypedd" [ngValue]="code.parameterId">{{code.value}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td *ngIf="taxstatus">
+                                <a *ngIf="data.showsave" href="javascript:void(0)"
+                                   (click)="Savevariabledata(data)" title="Save Variable Data"
+                                   class="fa fa-save" aria-hidden="true"></a>
+                                <a href="javascript:void(0)" *ngIf="!data.showEdit"
+                                   (click)="Editvariabledata(data)" title="Edit Variable Data"
+                                   class="fa fa-pencil" aria-hidden="true"></a>
+                                <a href="javascript:void(0)" title="Delete Variable Data"
+                                   (click)="Deletevariabledata(data)" *ngIf="!data.cancel"
+                                   class="fa fa-trash" aria-hidden="true"></a>
+                                <a href="javascript:void(0)" *ngIf="data.showupdate"
+                                   (click)="Updatevariabledata(data)" title="Update Variable Data"
+                                   class="fa fa-check" aria-hidden="true"></a>
+                                <a href="javascript:void(0)" *ngIf="data.cancel"
+                                   (click)="cancelvarabledata(data)" title="Cancel"
+                                   class="fa fa-close" aria-hidden="true"></a>
+                            </td>
+
+
+                            <!--<td>
+                                <span>  {{ data.createdOn | date: 'yyyy-MM-dd' }} </span>
+                            </td>
+                            <td>
+                                <span>  {{ data.createdBy }} </span>
+                            </td>-->
+                            <td>
+                                <span>  {{ data.updatedOn | date: 'yyyy-MM-dd' }} </span>
+                            </td>
+
+                            <td>
+                                <span>  {{ data.updatedBy }} </span>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 expand-newwidth">
+                    <a href="javascript:void(0)" title="Add Variable Data"  *ngIf="taxstatus" (click)="addNewVariabledata()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        <div id="menu2"  class="tab-pane fade">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 form-group heading">
+                    <label class="col-lg-3 col-md-4 col-sm-6 col-xs-12 lgheading" for="taxname">Look-up Group Name :</label>
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <input type="text" id="taxname" [(ngModel)]="lokupgroupname" placeholder="Enter Look-up Group Name" class="form-control inputbox">
+                    </div>
+                </div>
+                <div class="col-sm-11 col-xs-11 col-md-11 col-lg-11 no-padding table-responsive table-newwidth"  style="height:200px;overflow:auto;">
+                    <table class="table table-striped table-bordered">
+                        <thead class="table-inverse">
+                            <tr>
+                                <th>Variable Name</th>
+                                <th>Range Type</th>
+                                <th class="actions" *ngIf="taxstatus">Actions</th>
+                                <!--<th>Created on</th>
+                                <th>Created by</th>-->
+                                <th>Updated on</th>
+                                <th>Updated by</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let m of lookupgroupadd">
+                                <td>
+                                    <span *ngIf="!m.showEdit">{{ m.variableName }}</span>
+                                    <span *ngIf="false" [(ngModel)]="m.variableName"></span>
+                                    <div class="styled-select styled-new" *ngIf="m.showEdit">
+                                        <select class="styled-select" [(ngModel)]="m.variableIdnew" (ngModelChange)="onChangevariable($event,m)">
+                                            <option [value]="0">Please select Variable Name</option>
+                                            <option *ngFor="let code of _lookupdparameterdd" [ngValue]="code">{{code.variableName}}</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span *ngIf="!m.showEdit">{{ m.name }}</span>
+                                    <span *ngIf="false" [(ngModel)]="m.name"></span>
+                                    <div class="styled-select styled-new" *ngIf="m.showEdit">
+                                        <select class="styled-select" [(ngModel)]="m.parameterIdnew" (ngModelChange)="onChangerange($event,m)">
+                                            <option [value]="0">Please select Range Type</option>
+                                            <option *ngFor="let code of _lookuprangetypedd" [ngValue]="code">{{code.value}}</option>
+                                        </select>
+                                    </div>
+                                </td>
+                                <td *ngIf="taxstatus">
+                                    <a *ngIf="m.showsave" href="javascript:void(0)"
+                                       (click)="Savelookuptable(m,lookupgroupadd)" title="Save Variable Data "
+                                       class="fa fa-save" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" *ngIf="!m.showEdit"
+                                       (click)="editlookup(m,lookupgroupadd)" title="Edit Variable Data "
+                                       class="fa fa-pencil" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" title="Delete Variable Data "
+                                       (click)="deletemarket(m)" *ngIf="!m.cancel"
+                                       class="fa fa-trash" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" *ngIf="m.showupdate"
+                                       (click)="Updatelookup(m)" title="Update Variable Data "
+                                       class="fa fa-check" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" *ngIf="m.cancel"
+                                       (click)="cancellookup(m)" title="Cancel"
+                                       class="fa fa-close" aria-hidden="true"></a>
+                                </td>
+                                <!--<td>
+
+                                    <span>  {{ data.createdOn | date: 'yyyy-MM-dd' }} </span>
+                                </td>
+                                <td>
+                                    <span>  {{ data.createdBy }} </span>
+                                </td>-->
+                                <td>
+                                    <span>  {{ data.updatedOn | date: 'yyyy-MM-dd' }} </span>
+                                </td>
+
+                                <td>
+                                    <span>  {{ data.updatedBy }} </span>
+                                </td>
+
+
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 expand-newwidth">
+                        <a href="javascript:void(0)" title="Add Data" *ngIf="taxstatus" (click)="addnewlookupgroup()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                </div>
+
+                <div class="col-lg-12 action-btn ">
+                    <button class="btn" title="Add Look-up" (click)="savelookupdata(lookupgroupadd)">Add</button>
+                    <button class="btn" title="Cancel" (click)="cancellookupdata()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

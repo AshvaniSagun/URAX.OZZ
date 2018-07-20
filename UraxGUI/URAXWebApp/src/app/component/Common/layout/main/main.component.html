@@ -1,0 +1,225 @@
+<div class="container-fluid">
+    <urax-header></urax-header>
+    <section>
+        <urax-menu></urax-menu>
+        <div class="row">
+            <!--<img src=" content/images/background.jpg " class="img-fluid" alt="URAX"/>-->
+            <!--<h1>URAX</h1>-->
+            <!--<div class="sub-heading">
+            </div>-->
+            <div class="sectioncontainer">
+               
+                <!--<p class="showText"> <img src="content/images/C2.jpg" style="width:100%;padding-left: 363px; height:100%;margin:0 auto" alt="unff" /></p>-->
+                <app-pno12-fixed-parameter></app-pno12-fixed-parameter>
+                <div class="content">
+                    <Tax-search></Tax-search>
+                    <div class="row">
+                        <div class="main-content maincontent-new">
+                            <urax-tax-admin-menu></urax-tax-admin-menu>
+                            <div class="col-sm-12 col-xs-12 manage-tax-territory">
+                                <div class="container-rightcontent">
+                                    <urax-add-market></urax-add-market>
+                                </div>
+                            </div>
+                            <div class="col-sm-9 col-xs-12 manage-tax new-rightcontainer">
+                                <div class="container-rightcontent">
+                                    <urax-add-version></urax-add-version>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <app-start-page-admin></app-start-page-admin>
+            </div>
+            <div class="newscontent">
+                <div class="row newsinnercontent">
+                    <h3>News, Information and Training Material</h3>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <h5> News:</h5>
+                        <div class="media media-date " *ngFor=" let user of Newscontent"><div class="tablescroll" id="tblscroll">
+                            <img alt="mediaobject" style="float:left;width:100px;height:100px;position: inherit;" [src]="user.ImageData" class="media-object" />
+                            <div id="loadimage">
+                                <div style="word-break: break-all; font-weight: bold;">
+                                    <h4 class="media-heading" style="font-weight: 900;">{{user.contentHeading }}</h4>
+                                </div>
+                                <div id="loadimage2" class="media-body" [innerHTML]="user.contextText"></div>
+                            </div>
+                        </div>
+                                <h4 class="media-heading media-dateposition">Publish Date: {{user.publishStartDate  | date: 'yyyy-MM-dd'}}</h4>
+                            </div>                          
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <h5>Training Material:</h5>
+
+                        <div class="media media-date" *ngFor=" let user of  StartPageglobalAdminlist">
+                            <div class="tablescroll">
+                                <img alt="mediaobject" style="float:left;width:100px;height:100px;position: inherit;" [src]="user.ImageData" class="media-object" />
+                                <div>
+                                    <div style="word-break: break-all; font-weight:bold;">
+                                        <h4 class="media-heading" style="font-weight: 900;">{{user.contentHeading }}</h4>
+                                    </div>
+                                    <div id="loadimage2" class="media-body" [innerHTML]="user.contextText"></div>
+                                </div>
+                            </div>
+                            <h4 class="media-heading media-dateposition">Publish Date: {{user.publishStartDate  | date: 'yyyy-MM-dd'}}</h4>
+                        </div>
+                    </div>
+                
+                
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="overlay"></div>
+
+<div id="popupid">
+    <div class="newscontent newscontentpopup">
+        <div class="row newsinnercontent">
+            <h3>
+                News, Information  and Training Material
+                <img src="content/images/close.png" (click)="closepopup()" alt="close" id="closebtn" />
+            </h3>
+            <div class="popup-preview">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <h5>News:</h5>
+                    <div class="media media-date" *ngFor=" let user of  PreviewDataNews">
+                            <img alt="mediaobject" style="float:left;width:100px;height:100px;position: inherit;" [src]="user.ImageData" class="media-object" />
+                        <div>
+                            <div style="word-break: break-all; font-weight: bold;">
+                                <h4 class="media-heading"style="font-weight: 900;">{{user.contentHeading }}</h4>
+                            </div>
+                            <div class="media-body tablescroll" [innerHTML]="user.contextText"></div>
+                            <h4 class="media-heading media-dateposition">Publish Date: {{user.publishStartDate | date: 'yyyy-MM-dd'}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <h5>Training Material:</h5>
+                    <div class="media media-date" *ngFor=" let user of  PreviewDataGlobal">
+                            <img alt="mediaobject"  style="float:left;width:100px;height:100px; position: inherit;" [src]="user.ImageData" class="media-object" />
+                            <div>
+                                <div style="word-break: break-all;">
+                                    <h4 class="media-heading"style="font-weight: 900;">{{user.contentHeading }}</h4>
+                                </div>
+                                <div class="media-body tablescroll" [innerHTML]="user.contextText"></div>
+                                <h4 class="media-heading media-dateposition">Publish Date: {{user.publishStartDate | date: 'yyyy-MM-dd'}}</h4>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popupid2">
+    <div class="col-sm-12 col-xs-12">
+        <div class="col-sm-12 col-xs-12 msg">
+            <img src="content/images/success.png" alt="Success" />
+            <h6>Success!</h6>
+            <a href="javascript:void(0)">
+                <!--<img src="content/images/success-close.png" alt="close" id="closebtn2" (click)="loadingclose()" />-->
+            </a>
+            <p>  {{message}} </p>
+        </div>
+    </div>
+</div>
+<div id="popupid3">
+    <div class="col-sm-12 col-xs-12">
+        <div class="col-sm-12 col-xs-12 msg">
+            <img src="content/images/error.png" alt="Error" />
+            <h6>Error!</h6>
+            <a href="javascript:void(0)"><img src="content/images/success-close.png" alt="close" id="closebtn3" (click)="loadingclose()" /></a>
+            <p *ngFor=" let item of errormsg">{{ item.errormsg }}</p>
+        </div>
+    </div>
+</div>
+<div id="popupid4">
+    <div>
+        <img src="content/images/loading.gif" class="loading leftfloat" alt="loading" />
+        <p class="loading">Please wait..</p>
+    </div>
+</div>
+<div id="popupid5">
+    <div>
+        
+    </div>
+</div>
+<div id="formulatest">
+    <div class="col-lg-12 col-md-12 col-sm-10 col-xs-9 fields" style="padding-left: 15px;">
+        <a href="javascript:void(0)">
+            <img class="formula-close" src="content/images/success-close.png" alt="close" id="closebtn2" (click)="loadingclose()" />
+        </a>
+        <table class="table table-striped table-bordered formula-popup">
+            <thead class="table-inverse">
+                <tr>
+                    <th>Variable Name</th>
+                    <th>Variable Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of _testvariabllist">
+                    <td>
+                        <span>{{ data.name }}</span>
+                    </td>
+                    <td>
+                        <div class="hideextra hideextra-language table-width" >
+                            <span  *ngIf="data.variableTypeId ==7" >{{ data.value }}</span>
+                            <!--<input *ngIf="data.variableTypeId !=7" [(ngModel)]="data[data.name]" type="text">-->
+                            <input  *ngIf="data.variableTypeId !=7" [(ngModel)]="data.testValue" type="text" >
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="col-lg-12 action-btn " style="text-align:center;">
+            <button class="btn" title=" Calculate Result" (click)="Result(_testvariabllist)">Result</button>
+            <button class="btn" title="Cancel" (click)="loadingclose()">Cancel</button>
+        </div>
+        <div style="margin-left:9em"><b>{{Resulttest}}</b></div>
+    </div>
+    </div>
+<div id="swappopup">
+    <div class="col-lg-12 col-md-12 col-sm-10 col-xs-9 fields" style="padding-left: 15px;">
+        <a href="javascript:void(0)">
+            <img class="formula-close" src="content/images/success-close.png" alt="close" id="closebtn2" (click)="loadingclose()" />
+        </a>
+        <table class="table table-striped table-bordered formula-popup">
+            <thead class="table-inverse">
+                <tr>
+                    <th>current order</th>
+                    <th>Swap order</th>
+                    <th>Swap with</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="hideextra hideextra-language table-width">
+                           <span>{{swapid}}</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="styled-select">
+                            <select class="styled-select" [(ngModel)]="SwaptaxMasterId"  (change)="changeswaporder($event.target.value)">
+                                <option [value]="0">Please select Swapping order</option>
+                                <option *ngFor="let vr of _swapdd" value="{{vr.taxMasterId}}">{{vr.taxName}}</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                            <span>{{newswapid}}</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="col-lg-12 action-btn " style="text-align:center;">
+            <button class="btn" title="Swap" (click)="Swapdata()">Swap</button>
+            <button class="btn" title="Cancel" (click)="loadingclose()">Cancel</button>
+        </div>
+    </div>
+</div>
+
+

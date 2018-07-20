@@ -1,0 +1,25 @@
+
+<div class="PNO12">
+    <p-dataTable #dt [value]="Pno12list" styleClass="myTable" exportFilename="Pno12list" reorderableColumns="true" resizableColumns="true" columnResizeMode="expand" selectionMode="single" [(selection)]="selectedResource" [responsive]="true" [rows]="8" [paginator]="true" scrollHeight="300px">
+
+        <p-header>
+            <div style="text-align:left">
+                <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
+            </div>
+        </p-header>
+
+        <p-column *ngFor="let col of cols" [header]="col.Header" [field]="col.Field" [sortable]="true" [filter]="true" filterMatchMode="startsWith" filterPlaceholder="Search">
+
+        </p-column>
+
+
+    </p-dataTable>
+
+
+</div>
+
+
+
+
+
+

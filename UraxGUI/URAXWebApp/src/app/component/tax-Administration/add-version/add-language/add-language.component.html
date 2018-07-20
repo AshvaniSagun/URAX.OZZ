@@ -1,0 +1,119 @@
+<!--Tab4-->
+<!--<div class="languageContent">-->
+    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-padding table-responsive table-newwidth">
+        <div class="pane pane--table1">
+            <div class="pane-lang-hScroll">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-inverse">
+                        <tr>
+                            <th class="large-columnwidth">Language</th>
+                            <th class="large-columnwidth">Tax Name</th>
+                            <th class="tiny-columnwidth">Default</th>
+                            <th class="tiny-columnwidth">Actions</th>
+                            <!--<th>Created on</th>
+                    <th>Created by</th>-->
+                            <th class="medium-columnwidth">Updated on</th>
+                            <th class="medium-columnwidth">Updated by</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="pane-lang-vScroll">
+                    <table id="manage-language">
+                        <tbody>
+                            <tr *ngFor="let m of languagemodellist">
+                                <td class="large-columnwidth">
+
+                                    <div>
+                                        <span *ngIf="!m.showEdit">{{ m.languageName }}</span>
+                                        <select style="margin:0px !important;" class="styled-select" *ngIf="m.showEdit" id="selection" [(ngModel)]="m.languageId" (change)="langugagechange($event.target.value)">
+                                            <option [value]="0">Please select Language</option>
+                                            <option *ngFor="let lang of LanguageDropdown" value="{{lang.languageId}}">{{lang.language}}</option>
+                                        </select>
+                                    </div>
+
+
+                                </td>
+                                <td class="large-columnwidth">
+                                    <div style="word-break: break-all;">
+                                        <span *ngIf="!m.showEdit">{{ m.taxName }}</span>
+                                        <input style="width:170px; margin:0px;" colspan="2" oncopy="return false" onpaste="return false" type="text" [(ngModel)]="m.taxName" maxlength="200" placeholder="Enter Tax Name" *ngIf="m.showEdit" name="taxName" class="">
+                                    </div>
+
+
+                                </td>
+                                <td class="tiny-columnwidth">
+                                    <div class="hideextra hideextra-language" style="width: 60px;">
+                                        <span *ngIf="!m.showEdit">
+                                            <span *ngIf="m.isActive">
+                                                Y
+                                            </span>
+                                            <span *ngIf="!m.isActive">
+                                                N
+                                            </span>
+                                        </span>
+                                        <select class="styled-select" *ngIf="m.showEdit" [(ngModel)]=" m.isActive" (change)="Checkactive($event.target.value)">
+                                            <option [value]="0">Please select Default</option>
+                                            <option value="true" selected="selected">Y</option>
+                                            <option value="false">N</option>
+                                        </select>
+                                    </div>
+
+                                </td>
+                                <td class="tiny-columnwidth">
+                                    <div class="hideextra">
+                                        <a *ngIf="m.showsave" href="javascript:void(0)"
+                                           (click)="SaveLanguage(m,languagemodellist)" title="Save Language"
+                                           class="fa fa-save" aria-hidden="true"></a>
+                                        <a href="javascript:void(0)" *ngIf="!m.showEdit"
+                                           (click)="editVariable(m)" title="Edit Language"
+                                           class="fa fa-pencil" aria-hidden="true"></a>
+                                        <a href="javascript:void(0)" title="Delete Language"
+                                           (click)="deletelanguage(m)" *ngIf="!m.cancel"
+                                           class="fa fa-trash" aria-hidden="true"></a>
+                                        <a href="javascript:void(0)" *ngIf="m.showupdate"
+                                           (click)="UpdateLanguage(m,languagemodellist)" title="Update Language"
+                                           class="fa fa-check" aria-hidden="true"></a>
+                                        <a href="javascript:void(0)" *ngIf="m.cancel"
+                                           (click)="cancel(m)" title="Cancel"
+                                           class="fa fa-close" aria-hidden="true"></a>
+                                    </div>
+
+                                </td>
+                                <!--<td>
+                                               <div class="hideextra" style="width:73px">
+                                                   <span>  {{ m.createdOn | date: 'yyyy-MM-dd' }} </span>
+                                               </div>
+
+
+                                            </td>
+                                            <td>
+                                                <div class="hideextra" style="width:85px">
+                                                    <span>  {{ m.createdBy }} </span>
+                                                    </div>
+
+                        </td>-->
+                                <td class="medium-columnwidth">
+                                    <div class="hideextra">
+                                        <span>  {{ m.updatedOn | date: 'yyyy-MM-dd' }} </span>
+
+                                    </div>
+
+                                </td>
+
+                                <td class="medium-columnwidth">
+                                    <div class="hideextra">
+                                        <span>  {{ m.updatedBy }} </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 expand-newwidth">
+            <a href="javascript:void(0)" style="width:100%" title="Add Language" (click)="addNew(languagemodellist)"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+
+        </div>
+    <!--</div>-->

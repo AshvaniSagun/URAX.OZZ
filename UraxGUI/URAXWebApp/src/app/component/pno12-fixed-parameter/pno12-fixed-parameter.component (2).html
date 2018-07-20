@@ -1,0 +1,56 @@
+
+<div class="PNO12">
+
+    <p-dataTable #dt [value]="Pno12list"  styleClass="myTable" exportFilename="Pno12list" reorderableColumns="true" resizableColumns="true" 
+      columnResizeMode="expand" selectionMode="single"  [(selection)]="selectedResource" [responsive]="true" [rows]="8" [paginator]="true" 
+       scrollHeight="300px"  >
+       
+        <p-header>
+            <div style="text-align:left">
+                <p-multiSelect [options]="columnOptions" [(ngModel)]="cols"></p-multiSelect>
+            </div>
+        </p-header>
+
+        <p-column  *ngFor="let col of cols" 
+                 
+                  [header]="col.Header" 
+                  [field]="col.Field" 
+                  [sortable]="true"
+                  [filter]="true" 
+                  filterMatchMode="startsWith"
+                  filterPlaceholder="Search"
+               
+            
+                  >
+      
+
+          
+                <ng-template let-col let-row="rowData" pTemplate="body">
+                    <div pTooltip="you are selected  {{row[col.field]}}">
+                        {{row[col.field]}}
+                    
+                    </div>
+                </ng-template>
+         
+        </p-column>
+        <p-column field="vin" header="Vin"></p-column>
+
+    </p-dataTable>
+
+
+
+    <!--<div class="col-lg-3 col-md-6 col-sm-5 col-xs-12">
+        <div class="form-group">
+            <label for="equipmentFeature" class="col-lg-4 col-md-3 col-sm-3 col-xs-12 control-label">Equipment Feature</label>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-9">
+                <p-dropdown [style]="{'width':'100%'}" filter="true" filterPlaceholder="Search" placeholder="--Select--" [options]="equipmentFeatures"
+                    [(ngModel)]="" name="equipmentFeature" pTooltip="Select Equipment Feature"
+                    tooltipPosition="right" (onChange)="onFeatureChange()">
+                </p-dropdown>
+            </div>
+        </div>
+    </div>-->
+
+</div>
+
+

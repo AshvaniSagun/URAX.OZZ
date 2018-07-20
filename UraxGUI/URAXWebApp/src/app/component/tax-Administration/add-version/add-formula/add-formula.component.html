@@ -1,0 +1,124 @@
+<!--Tab3-->
+<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-padding table-responsive table-newwidth">
+    <div class="pane pane--table1">
+        <div class="pane-formula-hScroll">
+            <table class="table table-striped table-bordered">
+                <thead class="table-inverse">
+                    <tr>
+                        <th class="tiny-columnwidth">#</th>
+                        <th class="large-columnwidth">Name</th>
+                        <th class="extralarge-columnwidth">Definition</th>
+                        <th class="tiny-columnwidth"  *ngIf="taxstatus">Actions</th>
+                        <th class="small-columnwidth">Test</th>
+                        <th class="small-columnwidth">Min-Value</th>
+                        <th class="small-columnwidth">Max-Value</th>
+                        <!--<th>Created on</th>
+                    <th>Created by</th>-->
+                        <th class="small-columnwidth">Updated on</th>
+                        <th class="small-columnwidth">Updated by</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="pane-formula-vScroll">
+                <table id="manage-formula">
+                    <tbody>
+                        <tr *ngFor="let m of formulamodellist">
+                            <td class="tiny-columnwidth">
+                                <div class="hideextra hideextra-language">
+                                    <input type="text" hidden="hidden" [(ngModel)]="m.formulaId" />
+                                    <span *ngIf="!m.showEdit">{{ m.priority }}</span>
+                                    <input style="width:50px;" type="text" onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));" maxlength="3" placeholder="Enter Calculation Order" [(ngModel)]="m.priority" *ngIf="m.showEdit" class="">
+                                </div>
+                            </td>
+                            <td class="large-columnwidth">
+                                <div style="word-break: break-all">
+                                    <span *ngIf="!m.showEdit">{{ m.formulaName }}</span>
+                                    <select class="styled-select" *ngIf="m.showEdit" [(ngModel)]="m.variableId">
+                                        <option [value]="0">Please select Name</option>
+                                        <option *ngFor="let code of formulaName" value="{{code.variableId}}">{{code.variableName}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="extralarge-columnwidth">
+
+                                <div style="word-break: break-all">
+                                    <span *ngIf="!m.showEdit">{{ m.formulaDefinition }}</span>
+                                    <!--<input style="width:100%" type="text" [(ngModel)]="m.formulaDefinition" *ngIf="m.showEdit" class="">-->
+                                    <textarea rows="1" cols="20" placeholder="Enter Definition" [(ngModel)]="m.formulaDefinition" *ngIf="m.showEdit" name="contextText"></textarea>
+                                </div>
+                            </td>
+                            
+                            <td class="tiny-columnwidth" *ngIf="taxstatus">
+                                <div class="hideextra">
+                                    <a *ngIf="m.showsave" href="javascript:void(0)"
+                                       (click)="SaveFormulaDetails(m,formulamodellist)" title="Save Formula"
+                                       class="fa fa-save" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" *ngIf="!m.showEdit"
+                                       (click)="editVariable(m)" title="Edit Formula"
+                                       class="fa fa-pencil" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" title="Delete Formula"
+                                       (click)="DeleteFormula(m)" *ngIf="!m.cancel"
+                                       class="fa fa-trash" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" *ngIf="m.showupdate"
+                                       (click)="UpdateFormulaDetails(m,formulamodellist)" title="Update Formula"
+                                       class="fa fa-check" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" *ngIf="m.cancel"
+                                       (click)="cancel(m)" title="Cancel"
+                                       class="fa fa-close" aria-hidden="true"></a>
+                                </div>
+                            </td>
+                            <td class="small-columnwidth action-btn"> <button  *ngIf="!m.showEdit" style="min-width:60px; line-height:30px;margin: 3px 15px; " title="Test formula" class="btn" (click)="Testformula(m)">Test</button></td>
+                            <td class="small-columnwidth">
+                                <div class="hideextra hideextra-language">
+                                    <span *ngIf="!m.showEdit">{{ m.minValue }}</span>
+                                    <input style="width:75%" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" [(ngModel)]="m.minValue" placeholder="Enter Min Value" *ngIf="m.showEdit" class="">
+                                </div>
+
+                            </td>
+                            <td class="small-columnwidth">
+                                <div class="hideextra hideextra-language">
+                                    <span *ngIf="!m.showEdit">{{ m.maxValue }}</span>
+                                    <input style="width:75%" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" [(ngModel)]="m.maxValue" placeholder="Enter Max Value" *ngIf="m.showEdit" class="">
+                                </div>
+
+                            </td>
+                            <!--<td>
+
+                                            <div class="hideextra" style="width:100px">
+                                                <span>  {{ m.createdOn | date: 'yyyy-MM-dd' }} </span>
+                                                </div>
+                                         </td>
+                                        <td>
+                                            <div class="hideextra" style="width:95px">
+                                                <span>  {{ m.createdBy }} </span>
+                                                </div>
+
+                        </td>-->
+
+                            <td class="small-columnwidth">
+                                <div class="hideextra">
+                                    <span>  {{ m.updatedOn | date: 'yyyy-MM-dd' }} </span>
+                                </div>
+                                
+
+
+                            </td>
+
+                           <td class="small-columnwidth">
+                                <div class="hideextra">
+                                    <span>  {{ m.updatedBy }} </span>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+</div>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 expand-newwidth">
+            <a href="javascript:void(0)" title="Add Formula" *ngIf="taxstatus" (click)="addNew()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+        </div>
+
+

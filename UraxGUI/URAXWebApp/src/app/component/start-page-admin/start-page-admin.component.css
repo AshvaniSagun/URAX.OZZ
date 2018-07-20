@@ -1,0 +1,17 @@
+.center {
+    text-align: center;
+    border: 3px solid green;
+}
+textarea1 {
+    width: 100%;
+    border: 1px solid #b4b5b8;
+    color: #333;
+    padding: 12px;
+}
+
+#two {
+    border-style: solid;
+    border-width: medium;
+}
+
+ 

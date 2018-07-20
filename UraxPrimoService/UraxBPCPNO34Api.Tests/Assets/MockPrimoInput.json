@@ -1,0 +1,60 @@
+﻿{
+  "calculateTaxCombinedRequest": {
+    "locale": "en-US",
+    "environment": "TEST",
+    "revision": "1.7",
+    "applicationArea": {
+      "sender": {
+        "application": "Primo",
+        "requestCreatedDatetime": "2017-10-13T08:00:47Z",
+        "sequenceId": "123129132"
+      }
+    },
+    "dataArea": {
+      "CountryCode": "YE",
+      "gccTaxPartnerGroupCode": "",
+      "taxTerritory": "YM",
+      "specificationMarket": "112",
+      "CountrySubdivisionCode": "",
+      "partner": "",
+      "modelYear": "2018",
+      "taxationDate": "2018-01-02",
+      "currencyCode": "YER",
+      "fleet": "",
+      "pnoList": [
+        {
+          "pno34options": "246A8MA0411071700RA0000000000EU001000117000139000169000255000273000399000489000603000645000752000870999719",
+          "priceBase": "PRETAX",
+          "accessories": "",
+          "structureWeek": "201746",
+          "price": {
+            "amount": "10000"
+          },
+          "parameters": [
+            {
+              "id": "CC",
+              "name": "CYLINDER CAPACITY",
+              "datatype": "Numeric",
+              "value": "100",
+              "unit": ""
+            },
+            {
+              "id": "HP",
+              "name": "HP",
+              "datatype": "Decimal",
+              "value": "6",
+              "unit": ""
+            },
+            {
+              "id": "KW",
+              "name": "kW",
+              "datatype": "Decimal",
+              "value": "4.4742",
+              "unit": ""
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

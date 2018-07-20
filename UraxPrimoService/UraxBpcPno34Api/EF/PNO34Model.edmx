@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="URAXModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="GetMarketData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryCode" Type="varchar" Mode="In" />
+          <Parameter Name="PriceDate" Type="date" Mode="In" />
+          <Parameter Name="TaxTerritory" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetPno12CommercialData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TaxTerritory" Type="varchar" Mode="In" />
+          <Parameter Name="ModelYear" Type="varchar" Mode="In" />
+          <Parameter Name="specificationMarket" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetPno12CommercialDataPrimo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="TaxTerritory" Type="varchar" Mode="In" />
+          <Parameter Name="ModelYear" Type="varchar" Mode="In" />
+          <Parameter Name="specificationMarket" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="URAXModelStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="URAXModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="URAXEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="GetMarketData" ReturnType="Collection(URAXModel.GetMarketData_Result)">
+            <Parameter Name="CountryCode" Mode="In" Type="String" />
+            <Parameter Name="PriceDate" Mode="In" Type="DateTime" />
+            <Parameter Name="TaxTerritory" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPno12CommercialData" ReturnType="Collection(URAXModel.GetPno12CommercialData_Result)">
+            <Parameter Name="TaxTerritory" Mode="In" Type="String" />
+            <Parameter Name="ModelYear" Mode="In" Type="String" />
+            <Parameter Name="specificationMarket" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetPno12CommercialDataPrimo" ReturnType="Collection(URAXModel.GetPno12CommercialDataPrimo_Result)">
+            <Parameter Name="TaxTerritory" Mode="In" Type="String" />
+            <Parameter Name="ModelYear" Mode="In" Type="String" />
+            <Parameter Name="specificationMarket" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetMarketData_Result">
+          <Property Type="String" Name="MarketName" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="CountryCode" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="TaxName" Nullable="false" MaxLength="500" />
+          <Property Type="Int32" Name="TaxPositionId" Nullable="true" />
+          <Property Type="String" Name="VatPosition" Nullable="false" MaxLength="9" />
+          <Property Type="Int32" Name="TaxPriority" Nullable="false" />
+          <Property Type="DateTime" Name="StartDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TaxFlow" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="TaxFlowId" Nullable="false" />
+          <Property Type="String" Name="VariableName" Nullable="false" MaxLength="500" />
+          <Property Type="Boolean" Name="IslookUp" Nullable="true" />
+          <Property Type="Int32" Name="FormulaPriority" Nullable="false" />
+          <Property Type="String" Name="VariableType" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="VariableTypeId" Nullable="false" />
+          <Property Type="String" Name="UnitType" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="UnitTypeId" Nullable="true" />
+          <Property Type="String" Name="FormulaDefination" Nullable="true" />
+          <Property Type="String" Name="LookUpRange" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="LookupRangeTypeId" Nullable="true" />
+          <Property Type="String" Name="LookUpGroupName" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="LookUpGroup" Nullable="false" />
+          <Property Type="Int64" Name="GroupDetailsId" Nullable="true" />
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="ValueRange" Nullable="true" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="GetPno12CommercialData_Result">
+          <Property Type="String" Name="Pno12" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ModelYear" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CarLine" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="GetPno12CommercialDataPrimo_Result">
+          <Property Type="String" Name="Pno12" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ModelYear" Nullable="true" MaxLength="4" />
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CarLine" Nullable="true" MaxLength="100" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="URAXModelStoreContainer" CdmEntityContainer="URAXEntities" >
+          <FunctionImportMapping FunctionImportName="GetMarketData" FunctionName="URAXModel.Store.GetMarketData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="URAXModel.GetMarketData_Result">
+                <ScalarProperty Name="MarketName" ColumnName="MarketName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="TaxPositionId" ColumnName="TaxPositionId" />
+                <ScalarProperty Name="VatPosition" ColumnName="VatPosition" />
+                <ScalarProperty Name="TaxPriority" ColumnName="TaxPriority" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="TaxFlow" ColumnName="TaxFlow" />
+                <ScalarProperty Name="TaxFlowId" ColumnName="TaxFlowId" />
+                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+                <ScalarProperty Name="IslookUp" ColumnName="IslookUp" />
+                <ScalarProperty Name="FormulaPriority" ColumnName="FormulaPriority" />
+                <ScalarProperty Name="VariableType" ColumnName="VariableType" />
+                <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+                <ScalarProperty Name="UnitType" ColumnName="UnitType" />
+                <ScalarProperty Name="UnitTypeId" ColumnName="UnitTypeId" />
+                <ScalarProperty Name="FormulaDefination" ColumnName="FormulaDefination" />
+                <ScalarProperty Name="LookUpRange" ColumnName="LookUpRange" />
+                <ScalarProperty Name="LookupRangeTypeId" ColumnName="LookupRangeTypeId" />
+                <ScalarProperty Name="LookUpGroupName" ColumnName="LookUpGroupName" />
+                <ScalarProperty Name="LookUpGroup" ColumnName="LookUpGroup" />
+                <ScalarProperty Name="GroupDetailsId" ColumnName="GroupDetailsId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ValueRange" ColumnName="ValueRange" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPno12CommercialData" FunctionName="URAXModel.Store.GetPno12CommercialData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="URAXModel.GetPno12CommercialData_Result">
+                <ScalarProperty Name="Pno12" ColumnName="Pno12" />
+                <ScalarProperty Name="ModelYear" ColumnName="ModelYear" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CarLine" ColumnName="CarLine" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetPno12CommercialDataPrimo" FunctionName="URAXModel.Store.GetPno12CommercialDataPrimo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="URAXModel.GetPno12CommercialDataPrimo_Result">
+                <ScalarProperty Name="Pno12" ColumnName="Pno12" />
+                <ScalarProperty Name="ModelYear" ColumnName="ModelYear" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CarLine" ColumnName="CarLine" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

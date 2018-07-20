@@ -1,0 +1,90 @@
+﻿@model UraxUIServiceWebApi.EF.Market
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Market</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MarketName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarketName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.submarketcode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.submarketcode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CountryCode.CountryCode1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CountryCode.CountryCode1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrencyDetails.CurrencyCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrencyDetails.CurrencyCode)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MarketId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/UraxBPCPNO34Service" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="UraxBpcPno34Api_InstanceCount" Value="1" />
+    <Parameter Name="Environment" Value="Dev5" />
+    <Parameter Name="TENANT" Value="volvocars.onmicrosoft.com" />
+    <Parameter Name="DefaultCulture" Value="en-US" />
+    <Parameter Name="TOKENURL" Value="https://login.microsoftonline.com/volvocars.onmicrosoft.com/oauth2/token" />
+    <Parameter Name="REDARESOURCE" Value="https://redaqaadministration.azurewebsites.net" />
+    <Parameter Name="REDAUSERNAME" Value="Uraxservice@volvocars.biz" />
+    <Parameter Name="REDAPASSWORD" Value="UraxIntern68753" />
+    <Parameter Name="REDAACTIVE" Value="1" />
+    <Parameter Name="AUTHCLIENTID" Value="3b88c234-037b-467d-8b75-09f4fec00a86" />
+    <Parameter Name="REDACLIENTSECRET" Value="p6KqBw0Bi9rKrotLAHJlEufbgxnMlWAMv9D0dIveLEA=" />
+    <Parameter Name="REDASERVICEURL" Value="https://redamainqa.volvocars.biz:28264/api/URAX" />
+    <Parameter Name="AUDIENCE" Value="8a937989-e469-445f-88a6-e6a24f49da53" />
+    <Parameter Name="ApplicationInsightsInstrumentationKey" Value="418d2509-aa09-41e6-a57d-c7fae60197e4" />
+    <Parameter Name="TaxEngineUrl" Value="http://uraxsfdev.northeurope.cloudapp.azure.com:8086/" />
+    <Parameter Name="RedisCacheKey" Value="uraxdev.redis.cache.windows.net,password=d1NYas6XaBtcB3ifmYJMUtLqRg6AOrJRsGbeZcpqw3E=,ssl=True,abortConnect=False ,allowAdmin=true"/>
+  </Parameters>
+</Application>

@@ -1,0 +1,67 @@
+[
+  [
+    {
+      "SequenceId": 0,
+      "TaxName": "ENAUSTRILA",
+      "Value": 2599.61685823755,
+      "VatPosition": "VAT",
+      "VatPositionId": 2,
+      "Pno34": "246A8MA0411071700RA0000000000EU001000117000139000169000255000273000399000489000603000645000752000870999719"
+    }
+    ,
+    {
+      "SequenceId": 0,
+      "TaxName": "TUNSANATEST",
+      "Value": 4022.98850574713,
+      "VatPosition": "VAT",
+      "VatPositionId": 2,
+      "Pno34": "246A8MA0411071700RA0000000000EU001000117000139000169000255000273000399000489000603000645000752000870999719"
+    },
+    {
+      "SequenceId": 0,
+      "TaxName": "Austria_BEFORE_VAT",
+      "Value": 6.0,
+      "VatPosition": "Before VAT",
+      "VatPositionId": 1,
+      "Pno34": "246A8MA0411071700RA0000000000EU001000117000139000169000255000273000399000489000603000645000752000870999719"
+    },
+    {
+      "SequenceId": 0,
+      "TaxName": "Austria_AFTER_VAT",
+      "Value": 16.0,
+      "VatPosition": "After VAT",
+      "VatPositionId": 3,
+      "Pno34": "246A8MA0411071700RA0000000000EU001000117000139000169000255000273000399000489000603000645000752000870999719"
+    }
+  ],
+  [
+    {
+      "SequenceId": 2,
+      "TaxName": "TESTSOUTH",
+      "Value": -7000.4,
+      "VatPosition": "VAT",
+      "VatPositionId": 2,
+      "Pno34": "156 40 12 0 C 1 19 00000000000000000"
+    }
+  ],
+  [
+    {
+      "SequenceId": 3,
+      "TaxName": "TESTSOUTH",
+      "Value": -6010.0,
+      "VatPosition": "VAT",
+      "VatPositionId": 2,
+      "Pno34": "156 40 13 0 C 1 19 00000000000000000"
+    }
+  ],
+  [
+    {
+      "SequenceId": 4,
+      "TaxName": "TESTSOUTH",
+      "Value": 380.0,
+      "VatPosition": "VAT",
+      "VatPositionId": 2,
+      "Pno34": "156 40 81 0 C 1 19 00000000000000000"
+    }
+  ]
+]

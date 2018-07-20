@@ -1,0 +1,218 @@
+<div class="urax-display">
+    <p class="marketHeading">Manage Tax Territories</p>
+    <div class="col-sm-11 col-xs-11 table-responsive marketdiv table-newwidth">
+        <div class="pane pane--table1">
+            <div class="pane-hScroll">
+                <table class="table table-striped table-bordered">
+                    <thead class="table-inverse">
+                        <tr>
+                            <th class="large-columnwidth">Country Name</th>
+                            <th class="medium-columnwidth">Country Code</th>
+                            <th class="large-columnwidth">Subdivision Code</th>
+                            <th class="verylarge-columnwidth">Tax Territory</th>
+                            <th class="verylarge-columnwidth">GCC Tax Partner Group</th>
+                            <th class="verylarge-columnwidth">Currency</th>
+                            <th class="verylarge-columnwidth">Feature Level Tax</th>
+                            <th class="medium-columnwidth">Active</th>
+                            <th class="small-columnwidth">Actions</th>
+                            <!--<th>Created on</th>
+                            <th>Created by</th>-->
+                            <th class="medium-columnwidth">Updated on</th>
+                            <th class="medium-columnwidth">Updated by</th>
+
+                        </tr>
+                    </thead>
+
+                </table>
+                <div class="pane-vScroll">
+                    <table id="manage-taxterritory">
+                        <tbody>
+                            <tr *ngFor="let m of marketmodellist;trackBy:Trackbymarketid">
+                                <td class="large-columnwidth">
+                                    <div class="table-width">
+                                        <span *ngIf="!m.showEdit">{{ m.countryCode }}-{{ m.countryName }}</span>
+                                        <div class="styled-select styled-new" *ngIf="m.showEdit">
+                                            <select class="styled-select" [(ngModel)]="m.countryCodeId" (ngModelChange)="onChangemarket($event,m)">
+                                                <option [ngValue]="0">Select Country Name</option>
+                                                <option *ngFor="let code of marketcodelist" [ngValue]="code.countryCodeId">{{code.countryName}}</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </td>
+                                <td class="medium-columnwidth">
+                                    <div class="hideextra hideextra-language table-width">
+                                        <span *ngIf="!m.showEdit">{{ m.countryCode }}</span>
+                                        <div class="styled-select styled-new" *ngIf="m.showEdit">
+                                            <select class="styled-select" [(ngModel)]="m.countryCodeId" (ngModelChange)="onChangecountrycode($event,m)">
+                                                <option [ngValue]="0">Select Country Code</option>
+                                                <option *ngFor="let code of marketcodelist" [ngValue]="code.countryCodeId">{{code.countryCode}}</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                                <td class="large-columnwidth">
+                                    <div class="hideextra hideextra-language table-width">
+                                        <span *ngIf="!m.showEdit">{{ m.subdivisionCode }}</span>
+                                        <div class="styled-select styled-new" *ngIf="m.showEdit">
+                                            <select class="styled-select" [(ngModel)]="m.subdivisionCode" (ngModelChange)="onChangesubmarketcode($event,m)">
+                                                <option [ngValue]="0">Select Subdivision Code</option>
+                                                <option *ngFor="let code of subdivisionCodeList" [ngValue]="code.variableName">{{code.variableName}}</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                </td>
+
+
+
+
+
+                                <!--<td width="30%">
+                                    <div class="hideextra hideextra-language table-width">
+                                        <span *ngIf="!m.showEdit">  {{ m.subdivisionCode }} </span>
+                                        <input type="text" [(ngModel)]="m.subdivisionCode" *ngIf="m.showEdit" maxlength="6" class="form-control">
+                                    </div>
+
+                                </td>-->
+
+                                <td class="verylarge-columnwidth">
+                                    <div class="table-width">
+                                        <span *ngIf="!m.showEdit">  {{ m.taxTerritory }} </span>
+                                        <input type="text" [(ngModel)]="m.taxTerritory" *ngIf="m.showEdit" maxlength="20" class="form-control taxterritories">
+                                    </div>
+
+
+                                </td>
+
+
+                                <td class="verylarge-columnwidth">
+                                    <div class="hideextra hideextra-language table-width">
+                                        <span *ngIf="!m.showEdit">  {{ m.submarketCode }} </span>
+                                        <input type="text" [(ngModel)]="m.submarketCode" *ngIf="m.showEdit" maxlength="20" class="form-control taxterritories">
+                                    </div>
+
+                                </td>
+                                <td class="verylarge-columnwidth">
+                                    <div class="table-width">
+                                        <span *ngIf="!m.showEdit"> {{ m.currencyCode }} </span>
+                                        <div class="styled-select styled-new" *ngIf="m.showEdit">
+                                            <select class="styled-select" [(ngModel)]="m.currencyId" (ngModelChange)="onCurrencycode($event,m)">
+                                                <option [ngValue]="0">Select Currency</option>
+                                                <option *ngFor="let currency of marketcurrencylist" value="{{currency.currencyId}}">{{currency.currencyCode}}</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+
+
+                                <td class="verylarge-columnwidth">
+                                    <div class="hideextra hideextra-language table-width">
+                                        <span *ngIf="!m.showEdit">
+                                            <span *ngIf="m.featureLevelTax">
+                                                YES
+                                            </span>
+                                            <span *ngIf="!m.featureLevelTax">
+                                                NO
+                                            </span>
+                                        </span>
+                                        <select class="styled-select" *ngIf="m.showEdit" [(ngModel)]="m.featureLevelTax" (change)="featurset($event.target.value,m)">
+                                            <option value="true">YES</option>
+                                            <option value="false" selected="selected">NO</option>
+                                        </select>
+                                    </div>
+
+                                </td>
+
+
+                                <td class="medium-columnwidth">
+                                    <div class="hideextra hideextra-language table-width">
+                                        <span *ngIf="!m.showEdit">
+                                            <span *ngIf="m.isActive==true; else falsyTemplate">
+                                                YES
+                                            </span>
+                                            <ng-template #falsyTemplate>
+                                                NO
+                                            </ng-template>
+                                        </span>
+                                        <div class="styled-select styled-new table-width" *ngIf="m.showEdit">
+                                            <select class="styled-select" [(ngModel)]="m.isActive" (ngModelChange)="isactive($event)">
+                                                <option value="0">Select Active</option>
+                                                <option value="true">YES</option>
+                                                <option value="false">NO</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="small-columnwidth">
+                                    <div class="table-width" style="width:50px">
+                                        <a *ngIf="m.showsave" href="javascript:void(0)"
+                                           (click)="SaveCountryData(m)" title="Save CountryList"
+                                           class="fa fa-save" aria-hidden="true"></a>
+                                        <a href="javascript:void(0)" *ngIf="!m.showEdit"
+                                           (click)="editmarket(m)" title="Edit Country"
+                                           class="fa fa-pencil" aria-hidden="true"></a>
+                                        <!--<a href="javascript:void(0)"
+                                        (click)="deletemarket(m)" *ngIf="!m.cancel"
+                                        title="Delete Country"
+                                        class="fa fa-trash" aria-hidden="true"></a>-->
+                                        <a href="javascript:void(0)" *ngIf="m.showupdate"
+                                           (click)="UpdateCountryData(m)" title="Update Country"
+                                           class="fa fa-check" aria-hidden="true"></a>
+                                        <a href="javascript:void(0)" *ngIf="m.cancel"
+                                           (click)="cancel(m)" title="Cancel"
+                                           class="fa fa-close" aria-hidden="true"></a>
+                                    </div>
+
+                                </td>
+                                <!--<td>
+                                    <div class="hideextra" style="width:72px">
+                                        <span>  {{ m.createdOn | date: 'yyyy-MM-dd' }} </span>
+                                    </div>
+
+                                </td>
+                                <td>
+                                    <div class="hideextra" style="width:75px">
+                                        <span>  {{ m.createdBy }} </span>
+                                    </div>
+
+                                </td>-->
+                                <td class="medium-columnwidth">
+                                    <div class="hideextra table-width">
+                                        <span>  {{ m.updatedOn | date: 'yyyy-MM-dd' }} </span>
+                                    </div>
+                                </td>
+                                <td class="medium-columnwidth">
+                                    <div class="hideextra table-width">
+                                        <span>  {{ m.updatedBy }} </span>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--</div>
+        </div>-->
+
+
+
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 marketaddbutton expand-newwidth">
+        <a href="javascript:void(0)" title="Add New Country" (click)="addNew()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+    </div>
+</div>
+
+

@@ -1,0 +1,82 @@
+<div class="col-lg-11 col-md-11 col-sm-11 col-xs-12 fiels no-padding">
+    <div class="col-sm-6 col-xs-12 form-group heading" style="float:left">
+        <div class="col-sm-12 col-xs-12 form-group heading" style="float:left">
+            <label for="taxname" class="uraxcontent-heading"><b style="color:red;">*</b>{{Taxdetail}} :</label>
+            <input type="text" [disabled]="tax" [(ngModel)]="_NewVersionDetails.taxName" class="form-control inputbox" maxlength="200" oncopy="return false" onpaste="return false" placeholder="Enter Tax Name" id="taxname" required tabindex="1" />
+        </div>
+        <div class="col-sm-12 col-xs-12 form-group heading date-pick" style="float:right">
+            <label class="uraxcontent-heading"><b style="color:red;">*</b> Version Valid From:</label>
+            <div class="date-pickalign">
+                <input type="text" [disabled]="vvt" [(ngModel)]="versionvalidfrom" maxlength="10" (click)="selectdate1(_NewVersionDetails)" datetime="yyyy-MM-dd" id="datepicker" placeholder="YYYY-MM-DD" required tabindex="3">
+            </div>
+        </div>
+        <div class="col-sm-12 col-xs-12 form-group heading" style="float:left">
+            <label for="taxname" class="uraxcontent-heading"><b style="color:red;">*</b> Calculation Order:</label>
+            <input type="text" [disabled]="calorder" maxlength="3" oncopy="return false" onpaste="return false" onkeypress="return event.charCode === 0 || /\d/.test(String.fromCharCode(event.charCode));" [(ngModel)]="_NewVersionDetails.priority" class="form-control inputbox" placeholder="Enter Calculation Order" id="taxname" required tabindex="5" />
+        </div>
+        <div class="col-sm-12 col-xs-12 form-group heading" style="float:left">
+            <label for="taxname" class="uraxcontent-heading"><b style="color:red;">*</b>Tax Version Status:</label>
+            <div class="styled-select">
+                <select [disabled]="versionstatus" class="styled-select" [(ngModel)]="_NewVersionDetails.taxVersionStatusId" required tabindex="7">
+                    <option [value]="0">Please Select Version Status</option>
+                    <option *ngFor="let vr of ddlversionstatus" value="{{vr.parameterId}}">{{vr.value}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xs-12 form-group heading" style="float:left">
+        <div class="col-sm-12 col-xs-12 form-group heading">
+            <label for="taxname" class="uraxcontent-heading"><b style="color:red;">*</b> VAT Relation :</label>
+            <div class="styled-select">
+                <select [disabled]="vatrate" class="styled-select" [(ngModel)]="_NewVersionDetails.vatRelation" required tabindex="2">
+                    <option [value]="0">Please Select VAT Relation</option>
+                    <option *ngFor="let vr of ddlvatrelation" value="{{vr.parameterId}}">{{vr.value}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xs-12 form-group heading date-pick">
+            <label class="uraxcontent-heading">&nbsp;&nbsp;Version Valid To:</label>
+            <div class="date-pickalign">
+                <input type="text" [disabled]="vvf" [(ngModel)]="versionvalidto" (click)="selectdate(_NewVersionDetails)" maxlength="10" id="datepicker1" class="second-datepicker" placeholder="YYYY-MM-DD" required tabindex="4">
+            </div>
+        </div>
+        <div class="col-sm-12 col-xs-12 form-group heading">
+            <label for="taxname" class="uraxcontent-heading"><b style="color:red;">*</b> Price Base:</label>
+            <div class="styled-select">
+                <select [disabled]="pricebase" class="styled-select" [(ngModel)]="_NewVersionDetails.priceBase" required tabindex="6">
+                    <option [value]="0">Please Select Price Base</option>
+                    <option *ngFor="let pb of ddlpricebase" value="{{pb.parameterId}}">{{pb.value}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-xs-12 form-group heading">
+            <label for="taxname" class="uraxcontent-heading"><b style="color:red;">*</b>Feature Level Tax:</label>
+            <!--  <div>
+                  <input type="checkbox" name="featuretax" value="Yes" checked style="float:left; width:auto;  margin=0;" tabindex="8">
+                  <select class="styled-select" [(ngModel)]="_NewVersionDetails.taxversionstatus" required>
+                      <option [value]="Yes">Yes</option>
+                      <option [value]="No">No</option>
+                  </select>
+              </div>-->
+            <div class="box">
+                <div class="checkbox">
+                    <input [disabled]="futertax" type="checkbox" [(ngModel)]="_NewVersionDetails.featureLevelTax" name="featuretax" value="Yes" checked tabindex="8" />
+                    <i class="input-helper"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-12 col-xs-12 action-btn " style="margin-left:3%">
+        <p>
+            <button class="btn" title="Add New Version" (click)="Addnewversion(_NewVersionDetails)">Add New Version</button>
+            <button class="btn" title="Add Price Base" (click)="Addpricebase()">Add Price Base</button>
+            <button class="btn" title="Add New Tax" (click)="Addnewtax()">New Tax</button>
+            <button title="Copy Tax" class="btn" (click)="copytax()">Copy Tax</button>
+            <button class="btn" title="{{TaxAction}}" (click)="SaveVersionDetails(_NewVersionDetails)">{{TaxAction}}</button>
+            <button class="btn" title="Reset Tax" (click)="reloadtax()">Cancel</button>
+        </p>
+    </div>
+</div>

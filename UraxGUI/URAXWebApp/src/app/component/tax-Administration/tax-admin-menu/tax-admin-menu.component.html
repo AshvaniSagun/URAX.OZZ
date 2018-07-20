@@ -1,0 +1,46 @@
+<div class="col-sm-3 col-xs-12 manage-tax-spacing new-leftcontainer">
+    <div class="container-leftcontent">
+        <div class="clearfix newmarket-input">
+            <label>Select Country</label>
+            <div class="styled-select styled-new styled-select-width">
+                <select class="styled-select" [(ngModel)]="marketid" (change)="loadtaxterritorry($event.target.value)">
+                    <option *ngFor="let marlist of _tax_menu_marketdd" value="{{marlist.id}}">{{marlist.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="clearfix newmarket-input">
+            <label>Select Tax Territory</label>
+            <div class="styled-select styled-new styled-select-width">
+                <select class="styled-select" [(ngModel)]="taxteritoryid" (change)="loadEditMarket($event.target.value)">
+                    <option *ngFor="let taxteri of _taxterritorrydd" value="{{taxteri.id}}">{{taxteri.name}}</option>
+                </select>
+            </div>
+        </div>
+
+            <div class="clearfix newmarket-input">
+                <label>Select Tax Name</label>
+                <div class="styled-select styled-new styled-select-width">
+                    <select class="styled-select" [(ngModel)]="Taxid" (change)="loadversion($event.target.value)">
+                        <option *ngFor="let tax of _tax_menu_tax_dd" value="{{tax.taxId}}">{{tax.taxName}}</option>
+                    </select>
+                </div>
+                </div>
+            <div class="clearfix newmarket-input">
+                <label>Select Tax Version </label>
+                <div class="styled-select styled-new styled-select-width">
+                    <select class="styled-select"  [(ngModel)]="Taxversionid" (change)="loadtaxtype($event.target.value)">
+                        <option *ngFor="let vers of _tax_menu_version_dd" value="{{vers.taxVersionId}}">{{vers.versionName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="clearfix newmarket-input">
+                <label>Select Price Base</label>
+                <div class="styled-select styled-new styled-select-width">
+                    <select class="styled-select" [(ngModel)]="Taxtypeid" (change)="versiondetails($event.target.value)">
+                        <option *ngFor="let vers of _tax_menu_taxtype_dd" value="{{vers.taxId}}">{{vers.flowName}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+</div>

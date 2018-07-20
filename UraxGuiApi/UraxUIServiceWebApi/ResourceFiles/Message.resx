@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AuthorizationReq" xml:space="preserve">
+    <value>Authorization is required.</value>
+  </data>
+  <data name="CDSIDReq" xml:space="preserve">
+    <value>CDSID is required.</value>
+  </data>
+  <data name="ContentHeadingReq" xml:space="preserve">
+    <value>Content Heading is required.</value>
+  </data>
+  <data name="ContextTextReq" xml:space="preserve">
+    <value>Content Text is required.</value>
+  </data>
+  <data name="CountryCodeIdReq" xml:space="preserve">
+    <value>Country Code Id is required.</value>
+  </data>
+  <data name="CountryCodeReq" xml:space="preserve">
+    <value>Country Code is required.</value>
+  </data>
+  <data name="CountryNameReq" xml:space="preserve">
+    <value>Country Name is required.</value>
+  </data>
+  <data name="CreatedByReq" xml:space="preserve">
+    <value>Created By is required.</value>
+  </data>
+  <data name="CreatedOnReq" xml:space="preserve">
+    <value>Created On is required.</value>
+  </data>
+  <data name="CurrencyCodeReq" xml:space="preserve">
+    <value>Currency code is required.</value>
+  </data>
+  <data name="CurrencyIdReq" xml:space="preserve">
+    <value>Currency Id is required.</value>
+  </data>
+  <data name="EndDateReq" xml:space="preserve">
+    <value>End date is required.</value>
+  </data>
+  <data name="FirstNameReq" xml:space="preserve">
+    <value>First name is required.</value>
+  </data>
+  <data name="IsActiveReq" xml:space="preserve">
+    <value>IsActive is required.</value>
+  </data>
+  <data name="IsLookUpReq" xml:space="preserve">
+    <value>IsLookUp is required.</value>
+  </data>
+  <data name="LanguageIdReq" xml:space="preserve">
+    <value>Language Id is required.</value>
+  </data>
+  <data name="LanguageNameReq" xml:space="preserve">
+    <value>Language name is required.</value>
+  </data>
+  <data name="LoggedInDateReq" xml:space="preserve">
+    <value>Logged in date is required.</value>
+  </data>
+  <data name="LookUpGroupIdReq" xml:space="preserve">
+    <value>LookUpGroup Id is required.</value>
+  </data>
+  <data name="LookUpGroupNameReq" xml:space="preserve">
+    <value>LookUpGroup  name is required.</value>
+  </data>
+  <data name="LookUpGroupReq" xml:space="preserve">
+    <value>LookUpGroup is required.</value>
+  </data>
+  <data name="MarketIdReq" xml:space="preserve">
+    <value>Market Id is required.</value>
+  </data>
+  <data name="MarketNameReq" xml:space="preserve">
+    <value>Market name is required.</value>
+  </data>
+  <data name="OfficialEmailReq" xml:space="preserve">
+    <value>Official email Id is required.</value>
+  </data>
+  <data name="ParameterGroupIdReq" xml:space="preserve">
+    <value>Parameter Group Id is required.</value>
+  </data>
+  <data name="PhoneNoReq" xml:space="preserve">
+    <value>Phone Number is required.</value>
+  </data>
+  <data name="PriorityReq" xml:space="preserve">
+    <value>Priority Value is required.</value>
+  </data>
+  <data name="StartDateReq" xml:space="preserve">
+    <value>Start Date is required.</value>
+  </data>
+  <data name="StatusIDReq" xml:space="preserve">
+    <value>Status ID is required.</value>
+  </data>
+  <data name="SubmarketCodeLength" xml:space="preserve">
+    <value>Maximum and Minimum GCC tax partner group name lengths are 0, 20.</value>
+  </data>
+  <data name="SubMarketCodeReq" xml:space="preserve">
+    <value>Submarket code  is required.</value>
+  </data>
+  <data name="TaxFlowIdReq" xml:space="preserve">
+    <value>Tax Flow Id is required.</value>
+  </data>
+  <data name="TaxIdReq" xml:space="preserve">
+    <value>Tax Id is required.</value>
+  </data>
+  <data name="TaxMasterIdReq" xml:space="preserve">
+    <value>TaxMaster Id is required.</value>
+  </data>
+  <data name="TaxNameReq" xml:space="preserve">
+    <value>Tax Name is required.</value>
+  </data>
+  <data name="TaxVersionIdReq" xml:space="preserve">
+    <value>Tax Version Id is required.</value>
+  </data>
+  <data name="UnitTypeIdReq" xml:space="preserve">
+    <value>Unit Type Id is required.</value>
+  </data>
+  <data name="UpdatedByReq" xml:space="preserve">
+    <value>Updated By is required.</value>
+  </data>
+  <data name="UpdatedOnReq" xml:space="preserve">
+    <value>Updated On is required.</value>
+  </data>
+  <data name="UserRoleIdReq" xml:space="preserve">
+    <value>User Role Id is required.</value>
+  </data>
+  <data name="UserTypeIdReq" xml:space="preserve">
+    <value>User Type Id is required.</value>
+  </data>
+  <data name="ValueReq" xml:space="preserve">
+    <value>Value is required.</value>
+  </data>
+  <data name="VariableIdReq" xml:space="preserve">
+    <value>Variable Id is required.</value>
+  </data>
+  <data name="VariableNameReq" xml:space="preserve">
+    <value>Variable Name is required.</value>
+  </data>
+  <data name="VariableTypeIdReq" xml:space="preserve">
+    <value>Variable Type Id is required.</value>
+  </data>
+  <data name="VariableValueReq" xml:space="preserve">
+    <value>Variable Value is required.</value>
+  </data>
+  <data name="CmnDataNotFound" xml:space="preserve">
+    <value>Data is not present.</value>
+  </data>
+  <data name="CmnError" xml:space="preserve">
+    <value>Error :</value>
+  </data>
+  <data name="CountryCodeDuplicatemsg" xml:space="preserve">
+    <value>Country already exists with the same Country Code.</value>
+  </data>
+  <data name="CurrencyDetalisDuplicatemsg" xml:space="preserve">
+    <value>Currency details already exist with the same Currency Name.</value>
+  </data>
+  <data name="LanguageDuplicatemsg" xml:space="preserve">
+    <value>Language  already exists for this tax.</value>
+  </data>
+  <data name="MarketDuplicatemsg" xml:space="preserve">
+    <value>Same Tax territory already exists for the selected Country.</value>
+  </data>
+  <data name="MaterialNewsDuplicatemsg" xml:space="preserve">
+    <value>MaterialNews already exists.</value>
+  </data>
+  <data name="TaxMasterDuplicatemsg" xml:space="preserve">
+    <value>TaxMaster is already exist for the given TaxMasterId.</value>
+  </data>
+  <data name="CDSIDDuplicatemsg" xml:space="preserve">
+    <value>User is already exist with same CDSID.</value>
+  </data>
+  <data name="LookUpGroupDetailDuplicatemsg" xml:space="preserve">
+    <value>Variable name already  exists.</value>
+  </data>
+  <data name="InvalidEndStartCombmsg" xml:space="preserve">
+    <value>End date should not be less than start date.</value>
+  </data>
+  <data name="InvalidMarketIdmsg" xml:space="preserve">
+    <value>Invalid market Id is provided.</value>
+  </data>
+  <data name="InvalidTaxFlowIdmsg" xml:space="preserve">
+    <value>Selected Price Base value is invalid.</value>
+  </data>
+  <data name="InvalidTaxPositionmsg" xml:space="preserve">
+    <value>Invalid tax position Id is provided.</value>
+  </data>
+  <data name="MarketIdPriorityCombDuplicatemsg" xml:space="preserve">
+    <value>Calculation Order is already taken.</value>
+  </data>
+  <data name="VersionConflictmsg" xml:space="preserve">
+    <value>The selected Version period already exists.</value>
+  </data>
+  <data name="CountryCodeIdDuplicatemsg" xml:space="preserve">
+    <value>Country already exists with the same Country Code Id.</value>
+  </data>
+  <data name="CountryNameDuplicatemsg" xml:space="preserve">
+    <value>Country  already exists with the same Country Name.</value>
+  </data>
+  <data name="CurrencyCodeDuplicatemsg" xml:space="preserve">
+    <value>Currency is already exist with same Currency Code.</value>
+  </data>
+  <data name="FormulaExpressionWrong" xml:space="preserve">
+    <value>Formula expression is wrong.</value>
+  </data>
+  <data name="InvalidGroupDetailsIdmsg" xml:space="preserve">
+    <value>GroupDetails Id provided is invalid.</value>
+  </data>
+  <data name="InvalidLangIdmsg" xml:space="preserve">
+    <value>Provided Language Id is invalid.</value>
+  </data>
+  <data name="InvalidRangeTypemsg" xml:space="preserve">
+    <value>Invalid RangeType Id provided.It should be 12 or 13.</value>
+  </data>
+  <data name="InvalidTaxMasterIdmsg" xml:space="preserve">
+    <value>Provided taxmaster Id is invalid.</value>
+  </data>
+  <data name="MarketNameDuplicatemsg" xml:space="preserve">
+    <value>Market already exists  with the same market name.</value>
+  </data>
+  <data name="OperatorsList" xml:space="preserve">
+    <value>MIN,ROUNDDOWN,ROUNDUP,EXP,IF,MAX,ROUND,NOT,+,-,/,*,&lt;&gt;,&lt;=,&gt;=,&gt;,&lt;,^,%,",(,),=,.</value>
+  </data>
+  <data name="PriorityDuplicatemsg" xml:space="preserve">
+    <value>Priority Value already exists.</value>
+  </data>
+  <data name="TaxIdVarNameComboDuplicatemsg" xml:space="preserve">
+    <value>Variable details already exist for the given Tax</value>
+  </data>
+  <data name="VariableDuplicatemsg" xml:space="preserve">
+    <value>Variable Details already exist.</value>
+  </data>
+  <data name="VariableIdDuplication" xml:space="preserve">
+    <value>  already exists.</value>
+  </data>
+  <data name="InvalidImgIdmsg" xml:space="preserve">
+    <value>Image Id provided does not exist.</value>
+  </data>
+  <data name="InvalidMNIdmsg" xml:space="preserve">
+    <value>MNId provided is invalid.</value>
+  </data>
+  <data name="InvalidTaxIdmsg" xml:space="preserve">
+    <value>Tax Id provided is invalid.</value>
+  </data>
+  <data name="LookUpGroupDuplicatemsg" xml:space="preserve">
+    <value>LookupGroup already exist.</value>
+  </data>
+  <data name="DupVarIdmsg" xml:space="preserve">
+    <value>Variable Ids contain duplicate entries.</value>
+  </data>
+  <data name="LookUpDetailDuplicatemsg" xml:space="preserve">
+    <value>Lookupdetails already exist.</value>
+  </data>
+  <data name="NullImgmsg" xml:space="preserve">
+    <value>No image exists with this MNId.</value>
+  </data>
+  <data name="InvalidLookUpIdmsg" xml:space="preserve">
+    <value>Lookup Id provided is invalid.</value>
+  </data>
+  <data name="ValueRequired" xml:space="preserve">
+    <value>Variable value cant be null for fixed type.</value>
+  </data>
+  <data name="InvalidlgIdmsg" xml:space="preserve">
+    <value>LookupGroup Id is invalid.</value>
+  </data>
+  <data name="InvalidVarIdmsg" xml:space="preserve">
+    <value>Variable Id is invalid.</value>
+  </data>
+  <data name="CopyTaxDuplicatemsg" xml:space="preserve">
+    <value>CopyTax already exists.</value>
+  </data>
+  <data name="InvalidMarNameMsg" xml:space="preserve">
+    <value>Invalid country code is  provided.</value>
+  </data>
+  <data name="formsg" xml:space="preserve">
+    <value>Variable name is already used in</value>
+  </data>
+  <data name="Invarmsg" xml:space="preserve">
+    <value> are invalid variable names.</value>
+  </data>
+  <data name="InvalidEndDatemsg" xml:space="preserve">
+    <value>End date should not be less than current date.</value>
+  </data>
+  <data name="InvalidStartDatemsg" xml:space="preserve">
+    <value>Record already exists with greater than this start date.</value>
+  </data>
+  <data name="InvalidTaxNamemsg" xml:space="preserve">
+    <value>Tax name cannot be a variable name.</value>
+  </data>
+  <data name="DuplicateTaxNamemsg" xml:space="preserve">
+    <value>TaxName provided is already taken for this country.</value>
+  </data>
+  <data name="TaxFlowIdDuplicatemsg" xml:space="preserve">
+    <value>Selected Price Base already exists for the given Tax Version period.</value>
+  </data>
+  <data name="InvalidTaxVersionIdmsg" xml:space="preserve">
+    <value>Invalid tax version Id provided.</value>
+  </data>
+  <data name="InvalidMinMaxMsg" xml:space="preserve">
+    <value>Minimum value and maximum value is not valid.</value>
+  </data>
+  <data name="MinMaxMsg" xml:space="preserve">
+    <value>Minimum value should be lesser than maximum value.</value>
+  </data>
+  <data name="InvalidLookupGroupIdmsg" xml:space="preserve">
+    <value>Invalid LookUp Group Id is Provided.</value>
+  </data>
+  <data name="LookupGroupNameDuplicatemsg" xml:space="preserve">
+    <value>LookUp Group Name already exists for this tax type.</value>
+  </data>
+  <data name="FeatureLevelTaxReq" xml:space="preserve">
+    <value>FeatureLevelTax is required</value>
+  </data>
+  <data name="MaxLength200" xml:space="preserve">
+    <value>Max length is 200</value>
+  </data>
+  <data name="MaxLength50" xml:space="preserve">
+    <value>Max length is 50</value>
+  </data>
+  <data name="TaxTerritoryDuplicate" xml:space="preserve">
+    <value>TaxTerritory already exists.</value>
+  </data>
+  <data name="TaxTerritoryReq" xml:space="preserve">
+    <value>TaxTerritory is required.</value>
+  </data>
+  <data name="VariableIdmsg" xml:space="preserve">
+    <value>   cannot be used in this formula.</value>
+  </data>
+  <data name="DuplicateRowDatamsg" xml:space="preserve">
+    <value>Duplicate row details not allowed</value>
+  </data>
+  <data name="MarketTaxTerritoryDuplicatemsg" xml:space="preserve">
+    <value>Tax Territory is already exist.</value>
+  </data>
+  <data name="PublishDatemsg" xml:space="preserve">
+    <value>Publish start date should not be a past date.</value>
+  </data>
+  <data name="VariableNameFunmsg" xml:space="preserve">
+    <value>Variable name cannot be an Operator name.</value>
+  </data>
+  <data name="RangeTypLookUpgroupeMisMatchmsg" xml:space="preserve">
+    <value>Range type is mismatched.Please delete lookupdata first before changes rangeType.</value>
+  </data>
+  <data name="InvalidVarmsg" xml:space="preserve">
+    <value>  cannot be used as variable name.</value>
+  </data>
+  <data name="SingleInvarmsg" xml:space="preserve">
+    <value>is an Invalid variable name.</value>
+  </data>
+  <data name="TaxIdVarNameComboDuplicatemsg2" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FixedRangeTypemsg" xml:space="preserve">
+    <value>  cannot select range type as 'Range'.</value>
+  </data>
+  <data name="MasterVariableList" xml:space="preserve">
+    <value>LOOKUP,OUTPUT,INPUT,FIXED,CALCULATED,FEATURES</value>
+  </data>
+  <data name="MasterVariablemsg" xml:space="preserve">
+    <value>Reserved words cannot be used as variable name.</value>
+  </data>
+  <data name="RestrictedInputmsg" xml:space="preserve">
+    <value>Input variables name cannot be given for a User-defined variable name.</value>
+  </data>
+  <data name="Publishedformulamsg" xml:space="preserve">
+    <value>Published tax formula cannot be modified.</value>
+  </data>
+  <data name="PublishedLookupmsg" xml:space="preserve">
+    <value>Published lookup details cannot be modified.</value>
+  </data>
+  <data name="PublishedVarmsg" xml:space="preserve">
+    <value>Published tax variables cannot be modified.</value>
+  </data>
+  <data name="RestrictedTaxVersionStatusIdmsg" xml:space="preserve">
+    <value>Taxes cannot be published which are no longer valid (Expired).</value>
+  </data>
+  <data name="illegalDefaultmsg" xml:space="preserve">
+    <value>Only one language can be set to default 'Yes'.</value>
+  </data>
+  <data name="PublishedVermsg" xml:space="preserve">
+    <value>New Price Base shall not be added to a tax version already Published</value>
+  </data>
+</root>

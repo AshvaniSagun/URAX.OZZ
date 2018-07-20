@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dece8c72b0874fa698d1e1e686ac8b61" Name="Diagram1">
+        <EntityTypeShape EntityType="URAXDEVModel.CountryCode" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="URAXDEVModel.CurrencyDetail" Width="1.5" PointX="8.75" PointY="7.875" />
+        <EntityTypeShape EntityType="URAXDEVModel.ExceptionLog" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="URAXDEVModel.Formula" Width="1.5" PointX="22.25" PointY="13.125" />
+        <EntityTypeShape EntityType="URAXDEVModel.FormulaDefinitionDependencyDetail" Width="1.5" PointX="24.5" PointY="13.875" />
+        <EntityTypeShape EntityType="URAXDEVModel.ISO3166" Width="1.5" PointX="4.75" PointY="6.75" />
+        <EntityTypeShape EntityType="URAXDEVModel.LanguageDetail" Width="1.5" PointX="15.5" PointY="10" />
+        <EntityTypeShape EntityType="URAXDEVModel.Language" Width="1.5" PointX="13.25" PointY="7.125" />
+        <EntityTypeShape EntityType="URAXDEVModel.LookUpDetail" Width="1.5" PointX="24.5" PointY="18.375" />
+        <EntityTypeShape EntityType="URAXDEVModel.LookUpGroup" Width="1.5" PointX="20" PointY="17.75" />
+        <EntityTypeShape EntityType="URAXDEVModel.LookupGroupDetail" Width="1.5" PointX="22.25" PointY="18" />
+        <EntityTypeShape EntityType="URAXDEVModel.Market" Width="1.5" PointX="11" PointY="12.5" />
+        <EntityTypeShape EntityType="URAXDEVModel.MaterialNew" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="URAXDEVModel.ParameterDetail" Width="1.5" PointX="20" PointY="22.125" />
+        <EntityTypeShape EntityType="URAXDEVModel.ParameterGroupMaster" Width="1.5" PointX="17.75" PointY="22.375" />
+        <EntityTypeShape EntityType="URAXDEVModel.PartnerCodeMapper" Width="1.5" PointX="13.25" PointY="17.375" />
+        <EntityTypeShape EntityType="URAXDEVModel.Pno12" Width="1.5" PointX="0.75" PointY="1.125" />
+        <EntityTypeShape EntityType="URAXDEVModel.Pno12FixedParameters" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="URAXDEVModel.Pno12ParameterDefinition" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="URAXDEVModel.Pno12ParameterType" Width="1.5" PointX="1.5" PointY="12.625" />
+        <EntityTypeShape EntityType="URAXDEVModel.Pno12UnitOfMeasurement" Width="1.5" PointX="1.5" PointY="15.125" />
+        <EntityTypeShape EntityType="URAXDEVModel.PnoGroupMaster" Width="1.5" PointX="17.75" PointY="3.875" />
+        <EntityTypeShape EntityType="URAXDEVModel.PnoNumber" Width="1.5" PointX="20" PointY="5.625" />
+        <EntityTypeShape EntityType="URAXDEVModel.PnoParameter" Width="1.5" PointX="22.25" PointY="3.625" />
+        <EntityTypeShape EntityType="URAXDEVModel.PnoVariableMaster" Width="1.5" PointX="20" PointY="1.25" />
+        <EntityTypeShape EntityType="URAXDEVModel.SubdivisionCode" Width="1.5" PointX="8" PointY="29.75" />
+        <EntityTypeShape EntityType="URAXDEVModel.Tax" Width="1.5" PointX="17.75" PointY="15.125" />
+        <EntityTypeShape EntityType="URAXDEVModel.TaxMaster" Width="1.5" PointX="13.25" PointY="10.875" />
+        <EntityTypeShape EntityType="URAXDEVModel.TaxVersion" Width="1.5" PointX="15.5" PointY="15" />
+        <EntityTypeShape EntityType="URAXDEVModel.TempMarket" Width="1.5" PointX="8" PointY="12.625" />
+        <EntityTypeShape EntityType="URAXDEVModel.UserDetail" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="URAXDEVModel.UserRole" Width="1.5" PointX="8" PointY="1.625" />
+        <EntityTypeShape EntityType="URAXDEVModel.Variable" Width="1.5" PointX="20" PointY="12.75" />
+        <AssociationConnector Association="URAXDEVModel.FK_Market_CountryCodeId" />
+        <AssociationConnector Association="URAXDEVModel.FK_SubdivisionCode_CountryCodeId" />
+        <AssociationConnector Association="URAXDEVModel.FK_TempMarket_CountryCodeId" />
+        <AssociationConnector Association="URAXDEVModel.FK_Market_currencyId" />
+        <AssociationConnector Association="URAXDEVModel.FK_TempMarket_currencyId" />
+        <AssociationConnector Association="URAXDEVModel.FK_Formula_VariableId" />
+        <AssociationConnector Association="URAXDEVModel.FK_FormulaDefDependDetails_FormulaId" />
+        <AssociationConnector Association="URAXDEVModel.FK_FormulaDefDependDetails_VariableId" />
+        <AssociationConnector Association="URAXDEVModel.fk_LanguageDetails_LanguageId" />
+        <AssociationConnector Association="URAXDEVModel.fk_LanguageDetails_TaxMasterId" />
+        <AssociationConnector Association="URAXDEVModel.FK_LookUpDetails_GroupDetailsId" />
+        <AssociationConnector Association="URAXDEVModel.fk_LookUpGroup_TaxId" />
+        <AssociationConnector Association="URAXDEVModel.fk_LookupGroupDetail_LookUpGroupId" />
+        <AssociationConnector Association="URAXDEVModel.fk_LookupGroupDetail_LookupRangeTypeId" />
+        <AssociationConnector Association="URAXDEVModel.FK_LookupGroupDetail_VariableId" />
+        <AssociationConnector Association="URAXDEVModel.fk_PartnerCodeMapper_MarketId" />
+        <AssociationConnector Association="URAXDEVModel.fk_TaxMaster_MarketId" />
+        <AssociationConnector Association="URAXDEVModel.FK__Parameter__Param__1B9317B3" />
+        <AssociationConnector Association="URAXDEVModel.FK__Parameter__Param__373B3228" />
+        <AssociationConnector Association="URAXDEVModel.FK__Pno12Fixe__Pno12__73852659" />
+        <AssociationConnector Association="URAXDEVModel.FK__Pno12Fixe__Pno12__756D6ECB" />
+        <AssociationConnector Association="URAXDEVModel.FK__Pno12Fixe__Pno12__7755B73D" />
+        <AssociationConnector Association="URAXDEVModel.FK__Pno12Fixe__Pno12__72910220" />
+        <AssociationConnector Association="URAXDEVModel.FK__Pno12Fixe__Pno12__74794A92" />
+        <AssociationConnector Association="URAXDEVModel.FK__Pno12Fixe__Pno12__76619304" />
+        <AssociationConnector Association="URAXDEVModel.fk_Pno12ParameterDefinition_Pno12PtId" />
+        <AssociationConnector Association="URAXDEVModel.fk_Pno12ParameterDefinition_Pno12UomId" />
+        <AssociationConnector Association="URAXDEVModel.FK_PnoNumber_" />
+        <AssociationConnector Association="URAXDEVModel.FK_PnoVariableMaster_PnoGroupId" />
+        <AssociationConnector Association="URAXDEVModel.FK_PnoParameter_PnoId" />
+        <AssociationConnector Association="URAXDEVModel.FK_PnoParameter_VariableMasterId" />
+        <AssociationConnector Association="URAXDEVModel.fk_Tax_TaxVersionId" />
+        <AssociationConnector Association="URAXDEVModel.fk_Variable_TaxId" />
+        <AssociationConnector Association="URAXDEVModel.fk_TaxVersion_TaxMasterId" />
+        <AssociationConnector Association="URAXDEVModel.FK_UserRoles_UDetailsId" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,2743 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="URAXDEVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CountryCode">
+          <Key>
+            <PropertyRef Name="CountryCodeId" />
+          </Key>
+          <Property Name="CountryCodeId" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="250" />
+          <Property Name="CultureInfoDetails" Type="varchar" MaxLength="20" />
+          <Property Name="Descriptions" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CurrencyDetails">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="int" Nullable="false" />
+          <Property Name="CurrencyCode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Descriptions" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="CurrencyName" Type="varchar" MaxLength="250" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ExceptionLog">
+          <Key>
+            <PropertyRef Name="Logid" />
+          </Key>
+          <Property Name="Logid" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExceptionMsg" Type="varchar" MaxLength="100" />
+          <Property Name="ExceptionType" Type="varchar" MaxLength="100" />
+          <Property Name="ExceptionSource" Type="nvarchar(max)" />
+          <Property Name="ExceptionURL" Type="varchar" MaxLength="100" />
+          <Property Name="Logdate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Formula">
+          <Key>
+            <PropertyRef Name="FormulaId" />
+          </Key>
+          <Property Name="FormulaId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariableId" Type="bigint" Nullable="false" />
+          <Property Name="FormulaDefination" Type="varchar(max)" />
+          <Property Name="MinValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MaxValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FormulaDefinitionDependencyDetails">
+          <Key>
+            <PropertyRef Name="FrmDepId" />
+          </Key>
+          <Property Name="FrmDepId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormulaId" Type="bigint" Nullable="false" />
+          <Property Name="VariableId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ISO3166">
+          <Key>
+            <PropertyRef Name="Territory" />
+          </Key>
+          <Property Name="Territory" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Parent" Type="varchar" MaxLength="9" />
+          <Property Name="Local_code" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Full_code" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="Parent_code" Type="varchar" MaxLength="3" />
+          <Property Name="Code_Standard" Type="varchar" MaxLength="29" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LanguageDetails">
+          <Key>
+            <PropertyRef Name="LanguageDetailsId" />
+          </Key>
+          <Property Name="LanguageDetailsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxMasterId" Type="bigint" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="TaxName" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="10" />
+          <Property Name="Language" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="LanguageCountrycode" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LookUpDetails">
+          <Key>
+            <PropertyRef Name="LookUpId" />
+          </Key>
+          <Property Name="LookUpId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LookUpGroup" Type="int" Nullable="false" />
+          <Property Name="GroupDetailsId" Type="bigint" />
+          <Property Name="Value" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="LookUpGroup">
+          <Key>
+            <PropertyRef Name="LookUpGroupId" />
+          </Key>
+          <Property Name="LookUpGroupId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxId" Type="bigint" Nullable="false" />
+          <Property Name="LookUpGroupName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LookupGroupDetail">
+          <Key>
+            <PropertyRef Name="GroupDetailsId" />
+          </Key>
+          <Property Name="GroupDetailsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LookUpGroupId" Type="bigint" Nullable="false" />
+          <Property Name="VariableId" Type="bigint" Nullable="false" />
+          <Property Name="LookupRangeTypeId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Market">
+          <Key>
+            <PropertyRef Name="MarketId" />
+          </Key>
+          <Property Name="MarketId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryCodeId" Type="int" Nullable="false" />
+          <Property Name="TaxPartnerGroup" Type="varchar" MaxLength="20" />
+          <Property Name="currencyId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="SubdivisionCode" Type="varchar" MaxLength="50" />
+          <Property Name="TaxTerritory" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FeatureLevelTax" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaterialNews">
+          <Key>
+            <PropertyRef Name="MNId" />
+          </Key>
+          <Property Name="MNId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContentTypeId" Type="bigint" />
+          <Property Name="ContentHeading" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ContentText" Type="varchar(max)" Nullable="false" />
+          <Property Name="PublishStartDate" Type="date" />
+          <Property Name="PublishEndDate" Type="date" />
+          <Property Name="ImageUrl" Type="varchar" MaxLength="1000" />
+          <Property Name="ImageName" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="ImageData" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ParameterDetails">
+          <Key>
+            <PropertyRef Name="ParameterId" />
+          </Key>
+          <Property Name="ParameterId" Type="int" Nullable="false" />
+          <Property Name="ParameterGroupId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ParameterCode" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ParameterGroupMaster">
+          <Key>
+            <PropertyRef Name="ParameterGroupId" />
+          </Key>
+          <Property Name="ParameterGroupId" Type="int" Nullable="false" />
+          <Property Name="ParameterGroupName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PartnerCodeMapper">
+          <Key>
+            <PropertyRef Name="PartnerCodeMapperId" />
+          </Key>
+          <Property Name="PartnerCodeMapperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PartnerCode" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="GCCTaxPartnerCode" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="MarketId" Type="bigint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pno12">
+          <Key>
+            <PropertyRef Name="Pno12Id" />
+          </Key>
+          <Property Name="Pno12Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Pno12" Type="varchar" MaxLength="50" />
+          <Property Name="ModelYear" Type="varchar" MaxLength="4" />
+          <Property Name="CarLine" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="MarketId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pno12FixedParameters">
+          <Key>
+            <PropertyRef Name="Pno12Id" />
+            <PropertyRef Name="Pno12PdId" />
+          </Key>
+          <Property Name="Pno12Id" Type="int" Nullable="false" />
+          <Property Name="Pno12PdId" Type="int" Nullable="false" />
+          <Property Name="ParameterValue" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Pno12ParameterDefinition">
+          <Key>
+            <PropertyRef Name="Pno12PdId" />
+          </Key>
+          <Property Name="Pno12PdId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DefinitionName" Type="varchar" MaxLength="200" />
+          <Property Name="ShortName" Type="varchar" MaxLength="200" />
+          <Property Name="DataType" Type="varchar" MaxLength="200" />
+          <Property Name="Pno12PtId" Type="int" Nullable="false" />
+          <Property Name="Pno12UomId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="200" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Pno12ParameterType">
+          <Key>
+            <PropertyRef Name="Pno12PtId" />
+          </Key>
+          <Property Name="Pno12PtId" Type="int" Nullable="false" />
+          <Property Name="ParameterTypeName" Type="varchar" MaxLength="200" />
+          <Property Name="ParameterTypeDescription" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Pno12UnitOfMeasurement">
+          <Key>
+            <PropertyRef Name="Pno12UomId" />
+          </Key>
+          <Property Name="Pno12UomId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="LongName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="PnoGroupMaster">
+          <Key>
+            <PropertyRef Name="PnoGroupId" />
+          </Key>
+          <Property Name="PnoGroupId" Type="int" Nullable="false" />
+          <Property Name="PnoGroupName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Isactive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PnoNumber">
+          <Key>
+            <PropertyRef Name="PnoId" />
+          </Key>
+          <Property Name="PnoId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PnoGroupId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="MarketId" Type="varchar" MaxLength="10" />
+          <Property Name="ModelYear" Type="varchar" MaxLength="4" />
+          <Property Name="CarLine" Type="varchar" MaxLength="200" />
+          <Property Name="Isactive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PnoParameter">
+          <Key>
+            <PropertyRef Name="PnoParameterId" />
+          </Key>
+          <Property Name="PnoParameterId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PnoId" Type="bigint" Nullable="false" />
+          <Property Name="VariableMasterId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="1000" />
+          <Property Name="Isactive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PnoVariableMaster">
+          <Key>
+            <PropertyRef Name="VariableMasterId" />
+          </Key>
+          <Property Name="VariableMasterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PnoGroupId" Type="int" Nullable="false" />
+          <Property Name="VariableName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="VariableCode" Type="varchar" MaxLength="50" />
+          <Property Name="Datatype" Type="varchar" MaxLength="100" />
+          <Property Name="Isactive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="GuiName" Type="varchar" MaxLength="500" />
+          <Property Name="GroupTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubdivisionCode">
+          <Key>
+            <PropertyRef Name="SubdivisionCodeId" />
+          </Key>
+          <Property Name="SubdivisionCodeId" Type="int" Nullable="false" />
+          <Property Name="CountryCodeId" Type="int" Nullable="false" />
+          <Property Name="SubdivisionCode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="SubdivisionName" Type="nvarchar" MaxLength="200" />
+          <Property Name="LocalName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Descriptions" Type="varchar" MaxLength="200" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tax">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxVersionId" Type="bigint" Nullable="false" />
+          <Property Name="TaxFlowId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaxMaster">
+          <Key>
+            <PropertyRef Name="TaxMasterId" />
+          </Key>
+          <Property Name="TaxMasterId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarketId" Type="bigint" Nullable="false" />
+          <Property Name="TaxName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="TaxPositionId" Type="int" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaxVersion">
+          <Key>
+            <PropertyRef Name="TaxVersionId" />
+          </Key>
+          <Property Name="TaxVersionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxMasterId" Type="bigint" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="TaxVersionStatusId" Type="int" />
+          <Property Name="FeatureLevelTax" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TempMarket">
+          <Key>
+            <PropertyRef Name="MarketId" />
+          </Key>
+          <Property Name="MarketId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryCodeId" Type="int" Nullable="false" />
+          <Property Name="TaxPartnerGroup" Type="varchar" MaxLength="20" />
+          <Property Name="currencyId" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="SubdivisionCode" Type="varchar" MaxLength="50" />
+          <Property Name="TaxTerritory" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FeatureLevelTax" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="UDetailsId" />
+          </Key>
+          <Property Name="UDetailsId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CDSID" Type="varchar" MaxLength="100" />
+          <Property Name="FirstName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="MiddeName" Type="varchar" MaxLength="500" />
+          <Property Name="LastName" Type="varchar" MaxLength="200" />
+          <Property Name="PhoneNo" Type="varchar" MaxLength="25" />
+          <Property Name="OfficialEmail" Type="varchar" MaxLength="500" />
+          <Property Name="PersionalEMail" Type="varchar" MaxLength="500" />
+          <Property Name="StatusID" Type="int" />
+          <Property Name="UserTypeId" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="LoginDateUTC" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="500" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UDetailsId" Type="bigint" />
+          <Property Name="CountryCodeID" Type="bigint" />
+          <Property Name="AccessLevelId" Type="int" />
+          <Property Name="Authorization" Type="varchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="500" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Variable">
+          <Key>
+            <PropertyRef Name="VariableId" />
+          </Key>
+          <Property Name="VariableId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaxId" Type="bigint" Nullable="false" />
+          <Property Name="VariableName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Value" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UnitTypeId" Type="int" />
+          <Property Name="VariableTypeId" Type="int" Nullable="false" />
+          <Property Name="IslookUp" Type="bit" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="TestValue" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK__Parameter__Param__1B9317B3">
+          <End Role="ParameterGroupMaster" Type="Self.ParameterGroupMaster" Multiplicity="1" />
+          <End Role="ParameterDetails" Type="Self.ParameterDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroupMaster">
+              <PropertyRef Name="ParameterGroupId" />
+            </Principal>
+            <Dependent Role="ParameterDetails">
+              <PropertyRef Name="ParameterGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parameter__Param__373B3228">
+          <End Role="ParameterGroupMaster" Type="Self.ParameterGroupMaster" Multiplicity="1" />
+          <End Role="ParameterDetails" Type="Self.ParameterDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroupMaster">
+              <PropertyRef Name="ParameterGroupId" />
+            </Principal>
+            <Dependent Role="ParameterDetails">
+              <PropertyRef Name="ParameterGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__72910220">
+          <End Role="Pno12ParameterDefinition" Type="Self.Pno12ParameterDefinition" Multiplicity="1" />
+          <End Role="Pno12FixedParameters" Type="Self.Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12PdId" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12PdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__73852659">
+          <End Role="Pno12" Type="Self.Pno12" Multiplicity="1" />
+          <End Role="Pno12FixedParameters" Type="Self.Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12">
+              <PropertyRef Name="Pno12Id" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__74794A92">
+          <End Role="Pno12ParameterDefinition" Type="Self.Pno12ParameterDefinition" Multiplicity="1" />
+          <End Role="Pno12FixedParameters" Type="Self.Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12PdId" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12PdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__756D6ECB">
+          <End Role="Pno12" Type="Self.Pno12" Multiplicity="1" />
+          <End Role="Pno12FixedParameters" Type="Self.Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12">
+              <PropertyRef Name="Pno12Id" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__76619304">
+          <End Role="Pno12ParameterDefinition" Type="Self.Pno12ParameterDefinition" Multiplicity="1" />
+          <End Role="Pno12FixedParameters" Type="Self.Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12PdId" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12PdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__7755B73D">
+          <End Role="Pno12" Type="Self.Pno12" Multiplicity="1" />
+          <End Role="Pno12FixedParameters" Type="Self.Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12">
+              <PropertyRef Name="Pno12Id" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formula_VariableId">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+          <End Role="Formula" Type="Self.Formula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="VariableId" />
+            </Principal>
+            <Dependent Role="Formula">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormulaDefDependDetails_FormulaId">
+          <End Role="Formula" Type="Self.Formula" Multiplicity="1" />
+          <End Role="FormulaDefinitionDependencyDetails" Type="Self.FormulaDefinitionDependencyDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formula">
+              <PropertyRef Name="FormulaId" />
+            </Principal>
+            <Dependent Role="FormulaDefinitionDependencyDetails">
+              <PropertyRef Name="FormulaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormulaDefDependDetails_VariableId">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+          <End Role="FormulaDefinitionDependencyDetails" Type="Self.FormulaDefinitionDependencyDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="VariableId" />
+            </Principal>
+            <Dependent Role="FormulaDefinitionDependencyDetails">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LanguageDetails_LanguageId">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="LanguageDetails" Type="Self.LanguageDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="LanguageDetails">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LanguageDetails_TaxMasterId">
+          <End Role="TaxMaster" Type="Self.TaxMaster" Multiplicity="1" />
+          <End Role="LanguageDetails" Type="Self.LanguageDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxMaster">
+              <PropertyRef Name="TaxMasterId" />
+            </Principal>
+            <Dependent Role="LanguageDetails">
+              <PropertyRef Name="TaxMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LookUpDetails_GroupDetailsId">
+          <End Role="LookupGroupDetail" Type="Self.LookupGroupDetail" Multiplicity="0..1" />
+          <End Role="LookUpDetails" Type="Self.LookUpDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookupGroupDetail">
+              <PropertyRef Name="GroupDetailsId" />
+            </Principal>
+            <Dependent Role="LookUpDetails">
+              <PropertyRef Name="GroupDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LookUpGroup_TaxId">
+          <End Role="Tax" Type="Self.Tax" Multiplicity="1" />
+          <End Role="LookUpGroup" Type="Self.LookUpGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tax">
+              <PropertyRef Name="TaxId" />
+            </Principal>
+            <Dependent Role="LookUpGroup">
+              <PropertyRef Name="TaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LookupGroupDetail_LookUpGroupId">
+          <End Role="LookUpGroup" Type="Self.LookUpGroup" Multiplicity="1" />
+          <End Role="LookupGroupDetail" Type="Self.LookupGroupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookUpGroup">
+              <PropertyRef Name="LookUpGroupId" />
+            </Principal>
+            <Dependent Role="LookupGroupDetail">
+              <PropertyRef Name="LookUpGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LookupGroupDetail_LookupRangeTypeId">
+          <End Role="ParameterDetails" Type="Self.ParameterDetails" Multiplicity="0..1" />
+          <End Role="LookupGroupDetail" Type="Self.LookupGroupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterDetails">
+              <PropertyRef Name="ParameterId" />
+            </Principal>
+            <Dependent Role="LookupGroupDetail">
+              <PropertyRef Name="LookupRangeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LookupGroupDetail_VariableId">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+          <End Role="LookupGroupDetail" Type="Self.LookupGroupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="VariableId" />
+            </Principal>
+            <Dependent Role="LookupGroupDetail">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Market_CountryCodeId">
+          <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="1" />
+          <End Role="Market" Type="Self.Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="CountryCodeId" />
+            </Principal>
+            <Dependent Role="Market">
+              <PropertyRef Name="CountryCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Market_currencyId">
+          <End Role="CurrencyDetails" Type="Self.CurrencyDetails" Multiplicity="1" />
+          <End Role="Market" Type="Self.Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyDetails">
+              <PropertyRef Name="CurrencyId" />
+            </Principal>
+            <Dependent Role="Market">
+              <PropertyRef Name="currencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PartnerCodeMapper_MarketId">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="PartnerCodeMapper" Type="Self.PartnerCodeMapper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="MarketId" />
+            </Principal>
+            <Dependent Role="PartnerCodeMapper">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pno12ParameterDefinition_Pno12PtId">
+          <End Role="Pno12ParameterType" Type="Self.Pno12ParameterType" Multiplicity="1" />
+          <End Role="Pno12ParameterDefinition" Type="Self.Pno12ParameterDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12ParameterType">
+              <PropertyRef Name="Pno12PtId" />
+            </Principal>
+            <Dependent Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12PtId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pno12ParameterDefinition_Pno12UomId">
+          <End Role="Pno12UnitOfMeasurement" Type="Self.Pno12UnitOfMeasurement" Multiplicity="1" />
+          <End Role="Pno12ParameterDefinition" Type="Self.Pno12ParameterDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12UnitOfMeasurement">
+              <PropertyRef Name="Pno12UomId" />
+            </Principal>
+            <Dependent Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12UomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PnoNumber_">
+          <End Role="PnoGroupMaster" Type="Self.PnoGroupMaster" Multiplicity="1" />
+          <End Role="PnoNumber" Type="Self.PnoNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PnoGroupMaster">
+              <PropertyRef Name="PnoGroupId" />
+            </Principal>
+            <Dependent Role="PnoNumber">
+              <PropertyRef Name="PnoGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PnoParameter_PnoId">
+          <End Role="PnoNumber" Type="Self.PnoNumber" Multiplicity="1" />
+          <End Role="PnoParameter" Type="Self.PnoParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PnoNumber">
+              <PropertyRef Name="PnoId" />
+            </Principal>
+            <Dependent Role="PnoParameter">
+              <PropertyRef Name="PnoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PnoParameter_VariableMasterId">
+          <End Role="PnoVariableMaster" Type="Self.PnoVariableMaster" Multiplicity="1" />
+          <End Role="PnoParameter" Type="Self.PnoParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PnoVariableMaster">
+              <PropertyRef Name="VariableMasterId" />
+            </Principal>
+            <Dependent Role="PnoParameter">
+              <PropertyRef Name="VariableMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PnoVariableMaster_PnoGroupId">
+          <End Role="PnoGroupMaster" Type="Self.PnoGroupMaster" Multiplicity="1" />
+          <End Role="PnoVariableMaster" Type="Self.PnoVariableMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PnoGroupMaster">
+              <PropertyRef Name="PnoGroupId" />
+            </Principal>
+            <Dependent Role="PnoVariableMaster">
+              <PropertyRef Name="PnoGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubdivisionCode_CountryCodeId">
+          <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="1" />
+          <End Role="SubdivisionCode" Type="Self.SubdivisionCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="CountryCodeId" />
+            </Principal>
+            <Dependent Role="SubdivisionCode">
+              <PropertyRef Name="CountryCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Tax_TaxVersionId">
+          <End Role="TaxVersion" Type="Self.TaxVersion" Multiplicity="1" />
+          <End Role="Tax" Type="Self.Tax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxVersion">
+              <PropertyRef Name="TaxVersionId" />
+            </Principal>
+            <Dependent Role="Tax">
+              <PropertyRef Name="TaxVersionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaxMaster_MarketId">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="TaxMaster" Type="Self.TaxMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="MarketId" />
+            </Principal>
+            <Dependent Role="TaxMaster">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaxVersion_TaxMasterId">
+          <End Role="TaxMaster" Type="Self.TaxMaster" Multiplicity="1" />
+          <End Role="TaxVersion" Type="Self.TaxVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxMaster">
+              <PropertyRef Name="TaxMasterId" />
+            </Principal>
+            <Dependent Role="TaxVersion">
+              <PropertyRef Name="TaxMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempMarket_CountryCodeId">
+          <End Role="CountryCode" Type="Self.CountryCode" Multiplicity="1" />
+          <End Role="TempMarket" Type="Self.TempMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="CountryCodeId" />
+            </Principal>
+            <Dependent Role="TempMarket">
+              <PropertyRef Name="CountryCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempMarket_currencyId">
+          <End Role="CurrencyDetails" Type="Self.CurrencyDetails" Multiplicity="1" />
+          <End Role="TempMarket" Type="Self.TempMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyDetails">
+              <PropertyRef Name="CurrencyId" />
+            </Principal>
+            <Dependent Role="TempMarket">
+              <PropertyRef Name="currencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_UDetailsId">
+          <End Role="UserDetails" Type="Self.UserDetails" Multiplicity="0..1" />
+          <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="UDetailsId" />
+            </Principal>
+            <Dependent Role="UserRoles">
+              <PropertyRef Name="UDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Variable_TaxId">
+          <End Role="Tax" Type="Self.Tax" Multiplicity="1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tax">
+              <PropertyRef Name="TaxId" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="TaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="URAXDEVModelStoreContainer">
+          <EntitySet Name="CountryCode" EntityType="Self.CountryCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CurrencyDetails" EntityType="Self.CurrencyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExceptionLog" EntityType="Self.ExceptionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formula" EntityType="Self.Formula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormulaDefinitionDependencyDetails" EntityType="Self.FormulaDefinitionDependencyDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ISO3166" EntityType="Self.ISO3166" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LanguageDetails" EntityType="Self.LanguageDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LookUpDetails" EntityType="Self.LookUpDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LookUpGroup" EntityType="Self.LookUpGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LookupGroupDetail" EntityType="Self.LookupGroupDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Market" EntityType="Self.Market" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialNews" EntityType="Self.MaterialNews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParameterDetails" EntityType="Self.ParameterDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParameterGroupMaster" EntityType="Self.ParameterGroupMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartnerCodeMapper" EntityType="Self.PartnerCodeMapper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pno12" EntityType="Self.Pno12" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pno12FixedParameters" EntityType="Self.Pno12FixedParameters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pno12ParameterDefinition" EntityType="Self.Pno12ParameterDefinition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pno12ParameterType" EntityType="Self.Pno12ParameterType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pno12UnitOfMeasurement" EntityType="Self.Pno12UnitOfMeasurement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PnoGroupMaster" EntityType="Self.PnoGroupMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PnoNumber" EntityType="Self.PnoNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PnoParameter" EntityType="Self.PnoParameter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PnoVariableMaster" EntityType="Self.PnoVariableMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubdivisionCode" EntityType="Self.SubdivisionCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tax" EntityType="Self.Tax" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxMaster" EntityType="Self.TaxMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaxVersion" EntityType="Self.TaxVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TempMarket" EntityType="Self.TempMarket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Variable" EntityType="Self.Variable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Parameter__Param__1B9317B3" Association="Self.FK__Parameter__Param__1B9317B3">
+            <End Role="ParameterGroupMaster" EntitySet="ParameterGroupMaster" />
+            <End Role="ParameterDetails" EntitySet="ParameterDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parameter__Param__373B3228" Association="Self.FK__Parameter__Param__373B3228">
+            <End Role="ParameterGroupMaster" EntitySet="ParameterGroupMaster" />
+            <End Role="ParameterDetails" EntitySet="ParameterDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__72910220" Association="Self.FK__Pno12Fixe__Pno12__72910220">
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__73852659" Association="Self.FK__Pno12Fixe__Pno12__73852659">
+            <End Role="Pno12" EntitySet="Pno12" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__74794A92" Association="Self.FK__Pno12Fixe__Pno12__74794A92">
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__756D6ECB" Association="Self.FK__Pno12Fixe__Pno12__756D6ECB">
+            <End Role="Pno12" EntitySet="Pno12" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__76619304" Association="Self.FK__Pno12Fixe__Pno12__76619304">
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__7755B73D" Association="Self.FK__Pno12Fixe__Pno12__7755B73D">
+            <End Role="Pno12" EntitySet="Pno12" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formula_VariableId" Association="Self.FK_Formula_VariableId">
+            <End Role="Variable" EntitySet="Variable" />
+            <End Role="Formula" EntitySet="Formula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormulaDefDependDetails_FormulaId" Association="Self.FK_FormulaDefDependDetails_FormulaId">
+            <End Role="Formula" EntitySet="Formula" />
+            <End Role="FormulaDefinitionDependencyDetails" EntitySet="FormulaDefinitionDependencyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormulaDefDependDetails_VariableId" Association="Self.FK_FormulaDefDependDetails_VariableId">
+            <End Role="Variable" EntitySet="Variable" />
+            <End Role="FormulaDefinitionDependencyDetails" EntitySet="FormulaDefinitionDependencyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LanguageDetails_LanguageId" Association="Self.fk_LanguageDetails_LanguageId">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="LanguageDetails" EntitySet="LanguageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LanguageDetails_TaxMasterId" Association="Self.fk_LanguageDetails_TaxMasterId">
+            <End Role="TaxMaster" EntitySet="TaxMaster" />
+            <End Role="LanguageDetails" EntitySet="LanguageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LookUpDetails_GroupDetailsId" Association="Self.FK_LookUpDetails_GroupDetailsId">
+            <End Role="LookupGroupDetail" EntitySet="LookupGroupDetail" />
+            <End Role="LookUpDetails" EntitySet="LookUpDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LookUpGroup_TaxId" Association="Self.fk_LookUpGroup_TaxId">
+            <End Role="Tax" EntitySet="Tax" />
+            <End Role="LookUpGroup" EntitySet="LookUpGroup" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LookupGroupDetail_LookUpGroupId" Association="Self.fk_LookupGroupDetail_LookUpGroupId">
+            <End Role="LookUpGroup" EntitySet="LookUpGroup" />
+            <End Role="LookupGroupDetail" EntitySet="LookupGroupDetail" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LookupGroupDetail_LookupRangeTypeId" Association="Self.fk_LookupGroupDetail_LookupRangeTypeId">
+            <End Role="ParameterDetails" EntitySet="ParameterDetails" />
+            <End Role="LookupGroupDetail" EntitySet="LookupGroupDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LookupGroupDetail_VariableId" Association="Self.FK_LookupGroupDetail_VariableId">
+            <End Role="Variable" EntitySet="Variable" />
+            <End Role="LookupGroupDetail" EntitySet="LookupGroupDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Market_CountryCodeId" Association="Self.FK_Market_CountryCodeId">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="Market" EntitySet="Market" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Market_currencyId" Association="Self.FK_Market_currencyId">
+            <End Role="CurrencyDetails" EntitySet="CurrencyDetails" />
+            <End Role="Market" EntitySet="Market" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PartnerCodeMapper_MarketId" Association="Self.fk_PartnerCodeMapper_MarketId">
+            <End Role="Market" EntitySet="Market" />
+            <End Role="PartnerCodeMapper" EntitySet="PartnerCodeMapper" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pno12ParameterDefinition_Pno12PtId" Association="Self.fk_Pno12ParameterDefinition_Pno12PtId">
+            <End Role="Pno12ParameterType" EntitySet="Pno12ParameterType" />
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pno12ParameterDefinition_Pno12UomId" Association="Self.fk_Pno12ParameterDefinition_Pno12UomId">
+            <End Role="Pno12UnitOfMeasurement" EntitySet="Pno12UnitOfMeasurement" />
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PnoNumber_" Association="Self.FK_PnoNumber_">
+            <End Role="PnoGroupMaster" EntitySet="PnoGroupMaster" />
+            <End Role="PnoNumber" EntitySet="PnoNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PnoParameter_PnoId" Association="Self.FK_PnoParameter_PnoId">
+            <End Role="PnoNumber" EntitySet="PnoNumber" />
+            <End Role="PnoParameter" EntitySet="PnoParameter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PnoParameter_VariableMasterId" Association="Self.FK_PnoParameter_VariableMasterId">
+            <End Role="PnoVariableMaster" EntitySet="PnoVariableMaster" />
+            <End Role="PnoParameter" EntitySet="PnoParameter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PnoVariableMaster_PnoGroupId" Association="Self.FK_PnoVariableMaster_PnoGroupId">
+            <End Role="PnoGroupMaster" EntitySet="PnoGroupMaster" />
+            <End Role="PnoVariableMaster" EntitySet="PnoVariableMaster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubdivisionCode_CountryCodeId" Association="Self.FK_SubdivisionCode_CountryCodeId">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="SubdivisionCode" EntitySet="SubdivisionCode" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tax_TaxVersionId" Association="Self.fk_Tax_TaxVersionId">
+            <End Role="TaxVersion" EntitySet="TaxVersion" />
+            <End Role="Tax" EntitySet="Tax" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaxMaster_MarketId" Association="Self.fk_TaxMaster_MarketId">
+            <End Role="Market" EntitySet="Market" />
+            <End Role="TaxMaster" EntitySet="TaxMaster" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaxVersion_TaxMasterId" Association="Self.fk_TaxVersion_TaxMasterId">
+            <End Role="TaxMaster" EntitySet="TaxMaster" />
+            <End Role="TaxVersion" EntitySet="TaxVersion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempMarket_CountryCodeId" Association="Self.FK_TempMarket_CountryCodeId">
+            <End Role="CountryCode" EntitySet="CountryCode" />
+            <End Role="TempMarket" EntitySet="TempMarket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempMarket_currencyId" Association="Self.FK_TempMarket_currencyId">
+            <End Role="CurrencyDetails" EntitySet="CurrencyDetails" />
+            <End Role="TempMarket" EntitySet="TempMarket" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_UDetailsId" Association="Self.FK_UserRoles_UDetailsId">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="UserRoles" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Variable_TaxId" Association="Self.fk_Variable_TaxId">
+            <End Role="Tax" EntitySet="Tax" />
+            <End Role="Variable" EntitySet="Variable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="URAXDEVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="URAXEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CountryCodes" EntityType="URAXDEVModel.CountryCode" />
+          <EntitySet Name="CurrencyDetails" EntityType="URAXDEVModel.CurrencyDetail" />
+          <EntitySet Name="ExceptionLogs" EntityType="URAXDEVModel.ExceptionLog" />
+          <EntitySet Name="Formulae" EntityType="URAXDEVModel.Formula" />
+          <EntitySet Name="FormulaDefinitionDependencyDetails" EntityType="URAXDEVModel.FormulaDefinitionDependencyDetail" />
+          <EntitySet Name="ISO3166" EntityType="URAXDEVModel.ISO3166" />
+          <EntitySet Name="LanguageDetails" EntityType="URAXDEVModel.LanguageDetail" />
+          <EntitySet Name="Languages" EntityType="URAXDEVModel.Language" />
+          <EntitySet Name="LookUpDetails" EntityType="URAXDEVModel.LookUpDetail" />
+          <EntitySet Name="LookUpGroups" EntityType="URAXDEVModel.LookUpGroup" />
+          <EntitySet Name="LookupGroupDetails" EntityType="URAXDEVModel.LookupGroupDetail" />
+          <EntitySet Name="Markets" EntityType="URAXDEVModel.Market" />
+          <EntitySet Name="MaterialNews" EntityType="URAXDEVModel.MaterialNew" />
+          <EntitySet Name="ParameterDetails" EntityType="URAXDEVModel.ParameterDetail" />
+          <EntitySet Name="ParameterGroupMasters" EntityType="URAXDEVModel.ParameterGroupMaster" />
+          <EntitySet Name="PartnerCodeMappers" EntityType="URAXDEVModel.PartnerCodeMapper" />
+          <EntitySet Name="Pno12" EntityType="URAXDEVModel.Pno12" />
+          <EntitySet Name="Pno12FixedParameters" EntityType="URAXDEVModel.Pno12FixedParameters" />
+          <EntitySet Name="Pno12ParameterDefinition" EntityType="URAXDEVModel.Pno12ParameterDefinition" />
+          <EntitySet Name="Pno12ParameterType" EntityType="URAXDEVModel.Pno12ParameterType" />
+          <EntitySet Name="Pno12UnitOfMeasurement" EntityType="URAXDEVModel.Pno12UnitOfMeasurement" />
+          <EntitySet Name="PnoGroupMasters" EntityType="URAXDEVModel.PnoGroupMaster" />
+          <EntitySet Name="PnoNumbers" EntityType="URAXDEVModel.PnoNumber" />
+          <EntitySet Name="PnoParameters" EntityType="URAXDEVModel.PnoParameter" />
+          <EntitySet Name="PnoVariableMasters" EntityType="URAXDEVModel.PnoVariableMaster" />
+          <EntitySet Name="SubdivisionCodes" EntityType="URAXDEVModel.SubdivisionCode" />
+          <EntitySet Name="Taxes" EntityType="URAXDEVModel.Tax" />
+          <EntitySet Name="TaxMasters" EntityType="URAXDEVModel.TaxMaster" />
+          <EntitySet Name="TaxVersions" EntityType="URAXDEVModel.TaxVersion" />
+          <EntitySet Name="TempMarkets" EntityType="URAXDEVModel.TempMarket" />
+          <EntitySet Name="UserDetails" EntityType="URAXDEVModel.UserDetail" />
+          <EntitySet Name="UserRoles" EntityType="URAXDEVModel.UserRole" />
+          <EntitySet Name="Variables" EntityType="URAXDEVModel.Variable" />
+          <AssociationSet Name="FK_Market_CountryCodeId" Association="URAXDEVModel.FK_Market_CountryCodeId">
+            <End Role="CountryCode" EntitySet="CountryCodes" />
+            <End Role="Market" EntitySet="Markets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubdivisionCode_CountryCodeId" Association="URAXDEVModel.FK_SubdivisionCode_CountryCodeId">
+            <End Role="CountryCode" EntitySet="CountryCodes" />
+            <End Role="SubdivisionCode" EntitySet="SubdivisionCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempMarket_CountryCodeId" Association="URAXDEVModel.FK_TempMarket_CountryCodeId">
+            <End Role="CountryCode" EntitySet="CountryCodes" />
+            <End Role="TempMarket" EntitySet="TempMarkets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Market_currencyId" Association="URAXDEVModel.FK_Market_currencyId">
+            <End Role="CurrencyDetail" EntitySet="CurrencyDetails" />
+            <End Role="Market" EntitySet="Markets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TempMarket_currencyId" Association="URAXDEVModel.FK_TempMarket_currencyId">
+            <End Role="CurrencyDetail" EntitySet="CurrencyDetails" />
+            <End Role="TempMarket" EntitySet="TempMarkets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formula_VariableId" Association="URAXDEVModel.FK_Formula_VariableId">
+            <End Role="Variable" EntitySet="Variables" />
+            <End Role="Formula" EntitySet="Formulae" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormulaDefDependDetails_FormulaId" Association="URAXDEVModel.FK_FormulaDefDependDetails_FormulaId">
+            <End Role="Formula" EntitySet="Formulae" />
+            <End Role="FormulaDefinitionDependencyDetail" EntitySet="FormulaDefinitionDependencyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormulaDefDependDetails_VariableId" Association="URAXDEVModel.FK_FormulaDefDependDetails_VariableId">
+            <End Role="Variable" EntitySet="Variables" />
+            <End Role="FormulaDefinitionDependencyDetail" EntitySet="FormulaDefinitionDependencyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LanguageDetails_LanguageId" Association="URAXDEVModel.fk_LanguageDetails_LanguageId">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="LanguageDetail" EntitySet="LanguageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LanguageDetails_TaxMasterId" Association="URAXDEVModel.fk_LanguageDetails_TaxMasterId">
+            <End Role="TaxMaster" EntitySet="TaxMasters" />
+            <End Role="LanguageDetail" EntitySet="LanguageDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LookUpDetails_GroupDetailsId" Association="URAXDEVModel.FK_LookUpDetails_GroupDetailsId">
+            <End Role="LookupGroupDetail" EntitySet="LookupGroupDetails" />
+            <End Role="LookUpDetail" EntitySet="LookUpDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LookUpGroup_TaxId" Association="URAXDEVModel.fk_LookUpGroup_TaxId">
+            <End Role="Tax" EntitySet="Taxes" />
+            <End Role="LookUpGroup" EntitySet="LookUpGroups" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LookupGroupDetail_LookUpGroupId" Association="URAXDEVModel.fk_LookupGroupDetail_LookUpGroupId">
+            <End Role="LookUpGroup" EntitySet="LookUpGroups" />
+            <End Role="LookupGroupDetail" EntitySet="LookupGroupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_LookupGroupDetail_LookupRangeTypeId" Association="URAXDEVModel.fk_LookupGroupDetail_LookupRangeTypeId">
+            <End Role="ParameterDetail" EntitySet="ParameterDetails" />
+            <End Role="LookupGroupDetail" EntitySet="LookupGroupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LookupGroupDetail_VariableId" Association="URAXDEVModel.FK_LookupGroupDetail_VariableId">
+            <End Role="Variable" EntitySet="Variables" />
+            <End Role="LookupGroupDetail" EntitySet="LookupGroupDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_PartnerCodeMapper_MarketId" Association="URAXDEVModel.fk_PartnerCodeMapper_MarketId">
+            <End Role="Market" EntitySet="Markets" />
+            <End Role="PartnerCodeMapper" EntitySet="PartnerCodeMappers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaxMaster_MarketId" Association="URAXDEVModel.fk_TaxMaster_MarketId">
+            <End Role="Market" EntitySet="Markets" />
+            <End Role="TaxMaster" EntitySet="TaxMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parameter__Param__1B9317B3" Association="URAXDEVModel.FK__Parameter__Param__1B9317B3">
+            <End Role="ParameterGroupMaster" EntitySet="ParameterGroupMasters" />
+            <End Role="ParameterDetail" EntitySet="ParameterDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Parameter__Param__373B3228" Association="URAXDEVModel.FK__Parameter__Param__373B3228">
+            <End Role="ParameterGroupMaster" EntitySet="ParameterGroupMasters" />
+            <End Role="ParameterDetail" EntitySet="ParameterDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__73852659" Association="URAXDEVModel.FK__Pno12Fixe__Pno12__73852659">
+            <End Role="Pno12" EntitySet="Pno12" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__756D6ECB" Association="URAXDEVModel.FK__Pno12Fixe__Pno12__756D6ECB">
+            <End Role="Pno12" EntitySet="Pno12" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__7755B73D" Association="URAXDEVModel.FK__Pno12Fixe__Pno12__7755B73D">
+            <End Role="Pno12" EntitySet="Pno12" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__72910220" Association="URAXDEVModel.FK__Pno12Fixe__Pno12__72910220">
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__74794A92" Association="URAXDEVModel.FK__Pno12Fixe__Pno12__74794A92">
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pno12Fixe__Pno12__76619304" Association="URAXDEVModel.FK__Pno12Fixe__Pno12__76619304">
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+            <End Role="Pno12FixedParameters" EntitySet="Pno12FixedParameters" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pno12ParameterDefinition_Pno12PtId" Association="URAXDEVModel.fk_Pno12ParameterDefinition_Pno12PtId">
+            <End Role="Pno12ParameterType" EntitySet="Pno12ParameterType" />
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Pno12ParameterDefinition_Pno12UomId" Association="URAXDEVModel.fk_Pno12ParameterDefinition_Pno12UomId">
+            <End Role="Pno12UnitOfMeasurement" EntitySet="Pno12UnitOfMeasurement" />
+            <End Role="Pno12ParameterDefinition" EntitySet="Pno12ParameterDefinition" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PnoNumber_" Association="URAXDEVModel.FK_PnoNumber_">
+            <End Role="PnoGroupMaster" EntitySet="PnoGroupMasters" />
+            <End Role="PnoNumber" EntitySet="PnoNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PnoVariableMaster_PnoGroupId" Association="URAXDEVModel.FK_PnoVariableMaster_PnoGroupId">
+            <End Role="PnoGroupMaster" EntitySet="PnoGroupMasters" />
+            <End Role="PnoVariableMaster" EntitySet="PnoVariableMasters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PnoParameter_PnoId" Association="URAXDEVModel.FK_PnoParameter_PnoId">
+            <End Role="PnoNumber" EntitySet="PnoNumbers" />
+            <End Role="PnoParameter" EntitySet="PnoParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PnoParameter_VariableMasterId" Association="URAXDEVModel.FK_PnoParameter_VariableMasterId">
+            <End Role="PnoVariableMaster" EntitySet="PnoVariableMasters" />
+            <End Role="PnoParameter" EntitySet="PnoParameters" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Tax_TaxVersionId" Association="URAXDEVModel.fk_Tax_TaxVersionId">
+            <End Role="TaxVersion" EntitySet="TaxVersions" />
+            <End Role="Tax" EntitySet="Taxes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Variable_TaxId" Association="URAXDEVModel.fk_Variable_TaxId">
+            <End Role="Tax" EntitySet="Taxes" />
+            <End Role="Variable" EntitySet="Variables" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TaxVersion_TaxMasterId" Association="URAXDEVModel.fk_TaxVersion_TaxMasterId">
+            <End Role="TaxMaster" EntitySet="TaxMasters" />
+            <End Role="TaxVersion" EntitySet="TaxVersions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRoles_UDetailsId" Association="URAXDEVModel.FK_UserRoles_UDetailsId">
+            <End Role="UserDetail" EntitySet="UserDetails" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CountryCode">
+          <Key>
+            <PropertyRef Name="CountryCodeId" />
+          </Key>
+          <Property Name="CountryCodeId" Type="Int32" Nullable="false" />
+          <Property Name="CountryCode1" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CountryName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CultureInfoDetails" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Descriptions" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Markets" Relationship="URAXDEVModel.FK_Market_CountryCodeId" FromRole="CountryCode" ToRole="Market" />
+          <NavigationProperty Name="SubdivisionCodes" Relationship="URAXDEVModel.FK_SubdivisionCode_CountryCodeId" FromRole="CountryCode" ToRole="SubdivisionCode" />
+          <NavigationProperty Name="TempMarkets" Relationship="URAXDEVModel.FK_TempMarket_CountryCodeId" FromRole="CountryCode" ToRole="TempMarket" />
+        </EntityType>
+        <EntityType Name="CurrencyDetail">
+          <Key>
+            <PropertyRef Name="CurrencyId" />
+          </Key>
+          <Property Name="CurrencyId" Type="Int32" Nullable="false" />
+          <Property Name="CurrencyCode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Descriptions" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="CurrencyName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CountryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Markets" Relationship="URAXDEVModel.FK_Market_currencyId" FromRole="CurrencyDetail" ToRole="Market" />
+          <NavigationProperty Name="TempMarkets" Relationship="URAXDEVModel.FK_TempMarket_currencyId" FromRole="CurrencyDetail" ToRole="TempMarket" />
+        </EntityType>
+        <EntityType Name="ExceptionLog">
+          <Key>
+            <PropertyRef Name="Logid" />
+          </Key>
+          <Property Name="Logid" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExceptionMsg" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ExceptionSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionURL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Logdate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Formula">
+          <Key>
+            <PropertyRef Name="FormulaId" />
+          </Key>
+          <Property Name="FormulaId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariableId" Type="Int64" Nullable="false" />
+          <Property Name="FormulaDefination" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MinValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MaxValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Variable" Relationship="URAXDEVModel.FK_Formula_VariableId" FromRole="Formula" ToRole="Variable" />
+          <NavigationProperty Name="FormulaDefinitionDependencyDetails" Relationship="URAXDEVModel.FK_FormulaDefDependDetails_FormulaId" FromRole="Formula" ToRole="FormulaDefinitionDependencyDetail" />
+        </EntityType>
+        <EntityType Name="FormulaDefinitionDependencyDetail">
+          <Key>
+            <PropertyRef Name="FrmDepId" />
+          </Key>
+          <Property Name="FrmDepId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormulaId" Type="Int64" Nullable="false" />
+          <Property Name="VariableId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Formula" Relationship="URAXDEVModel.FK_FormulaDefDependDetails_FormulaId" FromRole="FormulaDefinitionDependencyDetail" ToRole="Formula" />
+          <NavigationProperty Name="Variable" Relationship="URAXDEVModel.FK_FormulaDefDependDetails_VariableId" FromRole="FormulaDefinitionDependencyDetail" ToRole="Variable" />
+        </EntityType>
+        <EntityType Name="ISO3166">
+          <Key>
+            <PropertyRef Name="Territory" />
+          </Key>
+          <Property Name="Territory" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Parent" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Local_code" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Full_code" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Parent_code" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Code_Standard" Type="String" Nullable="false" MaxLength="29" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="LanguageDetail">
+          <Key>
+            <PropertyRef Name="LanguageDetailsId" />
+          </Key>
+          <Property Name="LanguageDetailsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxMasterId" Type="Int64" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="TaxName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="URAXDEVModel.fk_LanguageDetails_LanguageId" FromRole="LanguageDetail" ToRole="Language" />
+          <NavigationProperty Name="TaxMaster" Relationship="URAXDEVModel.fk_LanguageDetails_TaxMasterId" FromRole="LanguageDetail" ToRole="TaxMaster" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Language1" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LanguageCountrycode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LanguageDetails" Relationship="URAXDEVModel.fk_LanguageDetails_LanguageId" FromRole="Language" ToRole="LanguageDetail" />
+        </EntityType>
+        <EntityType Name="LookUpDetail">
+          <Key>
+            <PropertyRef Name="LookUpId" />
+          </Key>
+          <Property Name="LookUpId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LookUpGroup" Type="Int32" Nullable="false" />
+          <Property Name="GroupDetailsId" Type="Int64" />
+          <Property Name="Value" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="LookupGroupDetail" Relationship="URAXDEVModel.FK_LookUpDetails_GroupDetailsId" FromRole="LookUpDetail" ToRole="LookupGroupDetail" />
+        </EntityType>
+        <EntityType Name="LookUpGroup">
+          <Key>
+            <PropertyRef Name="LookUpGroupId" />
+          </Key>
+          <Property Name="LookUpGroupId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxId" Type="Int64" Nullable="false" />
+          <Property Name="LookUpGroupName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tax" Relationship="URAXDEVModel.fk_LookUpGroup_TaxId" FromRole="LookUpGroup" ToRole="Tax" />
+          <NavigationProperty Name="LookupGroupDetails" Relationship="URAXDEVModel.fk_LookupGroupDetail_LookUpGroupId" FromRole="LookUpGroup" ToRole="LookupGroupDetail" />
+        </EntityType>
+        <EntityType Name="LookupGroupDetail">
+          <Key>
+            <PropertyRef Name="GroupDetailsId" />
+          </Key>
+          <Property Name="GroupDetailsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LookUpGroupId" Type="Int64" Nullable="false" />
+          <Property Name="VariableId" Type="Int64" Nullable="false" />
+          <Property Name="LookupRangeTypeId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LookUpDetails" Relationship="URAXDEVModel.FK_LookUpDetails_GroupDetailsId" FromRole="LookupGroupDetail" ToRole="LookUpDetail" />
+          <NavigationProperty Name="LookUpGroup" Relationship="URAXDEVModel.fk_LookupGroupDetail_LookUpGroupId" FromRole="LookupGroupDetail" ToRole="LookUpGroup" />
+          <NavigationProperty Name="ParameterDetail" Relationship="URAXDEVModel.fk_LookupGroupDetail_LookupRangeTypeId" FromRole="LookupGroupDetail" ToRole="ParameterDetail" />
+          <NavigationProperty Name="Variable" Relationship="URAXDEVModel.FK_LookupGroupDetail_VariableId" FromRole="LookupGroupDetail" ToRole="Variable" />
+        </EntityType>
+        <EntityType Name="Market">
+          <Key>
+            <PropertyRef Name="MarketId" />
+          </Key>
+          <Property Name="MarketId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCodeId" Type="Int32" Nullable="false" />
+          <Property Name="TaxPartnerGroup" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="currencyId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SubdivisionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TaxTerritory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FeatureLevelTax" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CountryCode" Relationship="URAXDEVModel.FK_Market_CountryCodeId" FromRole="Market" ToRole="CountryCode" />
+          <NavigationProperty Name="CurrencyDetail" Relationship="URAXDEVModel.FK_Market_currencyId" FromRole="Market" ToRole="CurrencyDetail" />
+          <NavigationProperty Name="PartnerCodeMappers" Relationship="URAXDEVModel.fk_PartnerCodeMapper_MarketId" FromRole="Market" ToRole="PartnerCodeMapper" />
+          <NavigationProperty Name="TaxMasters" Relationship="URAXDEVModel.fk_TaxMaster_MarketId" FromRole="Market" ToRole="TaxMaster" />
+        </EntityType>
+        <EntityType Name="MaterialNew">
+          <Key>
+            <PropertyRef Name="MNId" />
+          </Key>
+          <Property Name="MNId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContentTypeId" Type="Int64" />
+          <Property Name="ContentHeading" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ContentText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="PublishStartDate" Type="DateTime" Precision="0" />
+          <Property Name="PublishEndDate" Type="DateTime" Precision="0" />
+          <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ImageName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ImageData" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ParameterDetail">
+          <Key>
+            <PropertyRef Name="ParameterId" />
+          </Key>
+          <Property Name="ParameterId" Type="Int32" Nullable="false" />
+          <Property Name="ParameterGroupId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ParameterCode" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LookupGroupDetails" Relationship="URAXDEVModel.fk_LookupGroupDetail_LookupRangeTypeId" FromRole="ParameterDetail" ToRole="LookupGroupDetail" />
+          <NavigationProperty Name="ParameterGroupMaster" Relationship="URAXDEVModel.FK__Parameter__Param__1B9317B3" FromRole="ParameterDetail" ToRole="ParameterGroupMaster" />
+          <NavigationProperty Name="ParameterGroupMaster1" Relationship="URAXDEVModel.FK__Parameter__Param__373B3228" FromRole="ParameterDetail" ToRole="ParameterGroupMaster" />
+        </EntityType>
+        <EntityType Name="ParameterGroupMaster">
+          <Key>
+            <PropertyRef Name="ParameterGroupId" />
+          </Key>
+          <Property Name="ParameterGroupId" Type="Int32" Nullable="false" />
+          <Property Name="ParameterGroupName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ParameterDetails" Relationship="URAXDEVModel.FK__Parameter__Param__1B9317B3" FromRole="ParameterGroupMaster" ToRole="ParameterDetail" />
+          <NavigationProperty Name="ParameterDetails1" Relationship="URAXDEVModel.FK__Parameter__Param__373B3228" FromRole="ParameterGroupMaster" ToRole="ParameterDetail" />
+        </EntityType>
+        <EntityType Name="PartnerCodeMapper">
+          <Key>
+            <PropertyRef Name="PartnerCodeMapperId" />
+          </Key>
+          <Property Name="PartnerCodeMapperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PartnerCode" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GCCTaxPartnerCode" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MarketId" Type="Int64" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Market" Relationship="URAXDEVModel.fk_PartnerCodeMapper_MarketId" FromRole="PartnerCodeMapper" ToRole="Market" />
+        </EntityType>
+        <EntityType Name="Pno12">
+          <Key>
+            <PropertyRef Name="Pno12Id" />
+          </Key>
+          <Property Name="Pno12Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Pno121" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ModelYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CarLine" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="MarketId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Pno12FixedParameters" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__73852659" FromRole="Pno12" ToRole="Pno12FixedParameters" />
+          <NavigationProperty Name="Pno12FixedParameters1" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__756D6ECB" FromRole="Pno12" ToRole="Pno12FixedParameters" />
+          <NavigationProperty Name="Pno12FixedParameters2" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__7755B73D" FromRole="Pno12" ToRole="Pno12FixedParameters" />
+        </EntityType>
+        <EntityType Name="Pno12FixedParameters">
+          <Key>
+            <PropertyRef Name="Pno12Id" />
+            <PropertyRef Name="Pno12PdId" />
+          </Key>
+          <Property Name="Pno12Id" Type="Int32" Nullable="false" />
+          <Property Name="Pno12PdId" Type="Int32" Nullable="false" />
+          <Property Name="ParameterValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Pno12" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__73852659" FromRole="Pno12FixedParameters" ToRole="Pno12" />
+          <NavigationProperty Name="Pno121" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__756D6ECB" FromRole="Pno12FixedParameters" ToRole="Pno12" />
+          <NavigationProperty Name="Pno122" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__7755B73D" FromRole="Pno12FixedParameters" ToRole="Pno12" />
+          <NavigationProperty Name="Pno12ParameterDefinition" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__72910220" FromRole="Pno12FixedParameters" ToRole="Pno12ParameterDefinition" />
+          <NavigationProperty Name="Pno12ParameterDefinition1" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__74794A92" FromRole="Pno12FixedParameters" ToRole="Pno12ParameterDefinition" />
+          <NavigationProperty Name="Pno12ParameterDefinition2" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__76619304" FromRole="Pno12FixedParameters" ToRole="Pno12ParameterDefinition" />
+        </EntityType>
+        <EntityType Name="Pno12ParameterDefinition">
+          <Key>
+            <PropertyRef Name="Pno12PdId" />
+          </Key>
+          <Property Name="Pno12PdId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DefinitionName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ShortName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DataType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Pno12PtId" Type="Int32" Nullable="false" />
+          <Property Name="Pno12UomId" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Pno12FixedParameters" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__72910220" FromRole="Pno12ParameterDefinition" ToRole="Pno12FixedParameters" />
+          <NavigationProperty Name="Pno12FixedParameters1" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__74794A92" FromRole="Pno12ParameterDefinition" ToRole="Pno12FixedParameters" />
+          <NavigationProperty Name="Pno12FixedParameters2" Relationship="URAXDEVModel.FK__Pno12Fixe__Pno12__76619304" FromRole="Pno12ParameterDefinition" ToRole="Pno12FixedParameters" />
+          <NavigationProperty Name="Pno12ParameterType" Relationship="URAXDEVModel.fk_Pno12ParameterDefinition_Pno12PtId" FromRole="Pno12ParameterDefinition" ToRole="Pno12ParameterType" />
+          <NavigationProperty Name="Pno12UnitOfMeasurement" Relationship="URAXDEVModel.fk_Pno12ParameterDefinition_Pno12UomId" FromRole="Pno12ParameterDefinition" ToRole="Pno12UnitOfMeasurement" />
+        </EntityType>
+        <EntityType Name="Pno12ParameterType">
+          <Key>
+            <PropertyRef Name="Pno12PtId" />
+          </Key>
+          <Property Name="Pno12PtId" Type="Int32" Nullable="false" />
+          <Property Name="ParameterTypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ParameterTypeDescription" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pno12ParameterDefinition" Relationship="URAXDEVModel.fk_Pno12ParameterDefinition_Pno12PtId" FromRole="Pno12ParameterType" ToRole="Pno12ParameterDefinition" />
+        </EntityType>
+        <EntityType Name="Pno12UnitOfMeasurement">
+          <Key>
+            <PropertyRef Name="Pno12UomId" />
+          </Key>
+          <Property Name="Pno12UomId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="LongName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Pno12ParameterDefinition" Relationship="URAXDEVModel.fk_Pno12ParameterDefinition_Pno12UomId" FromRole="Pno12UnitOfMeasurement" ToRole="Pno12ParameterDefinition" />
+        </EntityType>
+        <EntityType Name="PnoGroupMaster">
+          <Key>
+            <PropertyRef Name="PnoGroupId" />
+          </Key>
+          <Property Name="PnoGroupId" Type="Int32" Nullable="false" />
+          <Property Name="PnoGroupName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PnoNumbers" Relationship="URAXDEVModel.FK_PnoNumber_" FromRole="PnoGroupMaster" ToRole="PnoNumber" />
+          <NavigationProperty Name="PnoVariableMasters" Relationship="URAXDEVModel.FK_PnoVariableMaster_PnoGroupId" FromRole="PnoGroupMaster" ToRole="PnoVariableMaster" />
+        </EntityType>
+        <EntityType Name="PnoNumber">
+          <Key>
+            <PropertyRef Name="PnoId" />
+          </Key>
+          <Property Name="PnoId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PnoGroupId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MarketId" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ModelYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CarLine" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PnoGroupMaster" Relationship="URAXDEVModel.FK_PnoNumber_" FromRole="PnoNumber" ToRole="PnoGroupMaster" />
+          <NavigationProperty Name="PnoParameters" Relationship="URAXDEVModel.FK_PnoParameter_PnoId" FromRole="PnoNumber" ToRole="PnoParameter" />
+        </EntityType>
+        <EntityType Name="PnoParameter">
+          <Key>
+            <PropertyRef Name="PnoParameterId" />
+          </Key>
+          <Property Name="PnoParameterId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PnoId" Type="Int64" Nullable="false" />
+          <Property Name="VariableMasterId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PnoNumber" Relationship="URAXDEVModel.FK_PnoParameter_PnoId" FromRole="PnoParameter" ToRole="PnoNumber" />
+          <NavigationProperty Name="PnoVariableMaster" Relationship="URAXDEVModel.FK_PnoParameter_VariableMasterId" FromRole="PnoParameter" ToRole="PnoVariableMaster" />
+        </EntityType>
+        <EntityType Name="PnoVariableMaster">
+          <Key>
+            <PropertyRef Name="VariableMasterId" />
+          </Key>
+          <Property Name="VariableMasterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PnoGroupId" Type="Int32" Nullable="false" />
+          <Property Name="VariableName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="VariableCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Datatype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Isactive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GuiName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GroupTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PnoGroupMaster" Relationship="URAXDEVModel.FK_PnoVariableMaster_PnoGroupId" FromRole="PnoVariableMaster" ToRole="PnoGroupMaster" />
+          <NavigationProperty Name="PnoParameters" Relationship="URAXDEVModel.FK_PnoParameter_VariableMasterId" FromRole="PnoVariableMaster" ToRole="PnoParameter" />
+        </EntityType>
+        <EntityType Name="SubdivisionCode">
+          <Key>
+            <PropertyRef Name="SubdivisionCodeId" />
+          </Key>
+          <Property Name="SubdivisionCodeId" Type="Int32" Nullable="false" />
+          <Property Name="CountryCodeId" Type="Int32" Nullable="false" />
+          <Property Name="SubdivisionCode1" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="SubdivisionName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LocalName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Descriptions" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="CountryCode" Relationship="URAXDEVModel.FK_SubdivisionCode_CountryCodeId" FromRole="SubdivisionCode" ToRole="CountryCode" />
+        </EntityType>
+        <EntityType Name="Tax">
+          <Key>
+            <PropertyRef Name="TaxId" />
+          </Key>
+          <Property Name="TaxId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxVersionId" Type="Int64" Nullable="false" />
+          <Property Name="TaxFlowId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LookUpGroups" Relationship="URAXDEVModel.fk_LookUpGroup_TaxId" FromRole="Tax" ToRole="LookUpGroup" />
+          <NavigationProperty Name="TaxVersion" Relationship="URAXDEVModel.fk_Tax_TaxVersionId" FromRole="Tax" ToRole="TaxVersion" />
+          <NavigationProperty Name="Variables" Relationship="URAXDEVModel.fk_Variable_TaxId" FromRole="Tax" ToRole="Variable" />
+        </EntityType>
+        <EntityType Name="TaxMaster">
+          <Key>
+            <PropertyRef Name="TaxMasterId" />
+          </Key>
+          <Property Name="TaxMasterId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarketId" Type="Int64" Nullable="false" />
+          <Property Name="TaxName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="TaxPositionId" Type="Int32" />
+          <Property Name="Priority" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="LanguageDetails" Relationship="URAXDEVModel.fk_LanguageDetails_TaxMasterId" FromRole="TaxMaster" ToRole="LanguageDetail" />
+          <NavigationProperty Name="Market" Relationship="URAXDEVModel.fk_TaxMaster_MarketId" FromRole="TaxMaster" ToRole="Market" />
+          <NavigationProperty Name="TaxVersions" Relationship="URAXDEVModel.fk_TaxVersion_TaxMasterId" FromRole="TaxMaster" ToRole="TaxVersion" />
+        </EntityType>
+        <EntityType Name="TaxVersion">
+          <Key>
+            <PropertyRef Name="TaxVersionId" />
+          </Key>
+          <Property Name="TaxVersionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxMasterId" Type="Int64" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TaxVersionStatusId" Type="Int32" />
+          <Property Name="FeatureLevelTax" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Taxes" Relationship="URAXDEVModel.fk_Tax_TaxVersionId" FromRole="TaxVersion" ToRole="Tax" />
+          <NavigationProperty Name="TaxMaster" Relationship="URAXDEVModel.fk_TaxVersion_TaxMasterId" FromRole="TaxVersion" ToRole="TaxMaster" />
+        </EntityType>
+        <EntityType Name="TempMarket">
+          <Key>
+            <PropertyRef Name="MarketId" />
+          </Key>
+          <Property Name="MarketId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCodeId" Type="Int32" Nullable="false" />
+          <Property Name="TaxPartnerGroup" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="currencyId" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SubdivisionCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TaxTerritory" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FeatureLevelTax" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="CountryCode" Relationship="URAXDEVModel.FK_TempMarket_CountryCodeId" FromRole="TempMarket" ToRole="CountryCode" />
+          <NavigationProperty Name="CurrencyDetail" Relationship="URAXDEVModel.FK_TempMarket_currencyId" FromRole="TempMarket" ToRole="CurrencyDetail" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UDetailsId" />
+          </Key>
+          <Property Name="UDetailsId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CDSID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MiddeName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNo" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="OfficialEmail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PersionalEMail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StatusID" Type="Int32" />
+          <Property Name="UserTypeId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="LoginDateUTC" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserRoles" Relationship="URAXDEVModel.FK_UserRoles_UDetailsId" FromRole="UserDetail" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UDetailsId" Type="Int64" />
+          <Property Name="CountryCodeID" Type="Int64" />
+          <Property Name="AccessLevelId" Type="Int32" />
+          <Property Name="Authorization" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserDetail" Relationship="URAXDEVModel.FK_UserRoles_UDetailsId" FromRole="UserRole" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="Variable">
+          <Key>
+            <PropertyRef Name="VariableId" />
+          </Key>
+          <Property Name="VariableId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaxId" Type="Int64" Nullable="false" />
+          <Property Name="VariableName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Value" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UnitTypeId" Type="Int32" />
+          <Property Name="VariableTypeId" Type="Int32" Nullable="false" />
+          <Property Name="IslookUp" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TestValue" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Formulae" Relationship="URAXDEVModel.FK_Formula_VariableId" FromRole="Variable" ToRole="Formula" />
+          <NavigationProperty Name="FormulaDefinitionDependencyDetails" Relationship="URAXDEVModel.FK_FormulaDefDependDetails_VariableId" FromRole="Variable" ToRole="FormulaDefinitionDependencyDetail" />
+          <NavigationProperty Name="LookupGroupDetails" Relationship="URAXDEVModel.FK_LookupGroupDetail_VariableId" FromRole="Variable" ToRole="LookupGroupDetail" />
+          <NavigationProperty Name="Tax" Relationship="URAXDEVModel.fk_Variable_TaxId" FromRole="Variable" ToRole="Tax" />
+        </EntityType>
+        <Association Name="FK_Market_CountryCodeId">
+          <End Type="URAXDEVModel.CountryCode" Role="CountryCode" Multiplicity="1" />
+          <End Type="URAXDEVModel.Market" Role="Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="CountryCodeId" />
+            </Principal>
+            <Dependent Role="Market">
+              <PropertyRef Name="CountryCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubdivisionCode_CountryCodeId">
+          <End Type="URAXDEVModel.CountryCode" Role="CountryCode" Multiplicity="1" />
+          <End Type="URAXDEVModel.SubdivisionCode" Role="SubdivisionCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="CountryCodeId" />
+            </Principal>
+            <Dependent Role="SubdivisionCode">
+              <PropertyRef Name="CountryCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempMarket_CountryCodeId">
+          <End Type="URAXDEVModel.CountryCode" Role="CountryCode" Multiplicity="1" />
+          <End Type="URAXDEVModel.TempMarket" Role="TempMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CountryCode">
+              <PropertyRef Name="CountryCodeId" />
+            </Principal>
+            <Dependent Role="TempMarket">
+              <PropertyRef Name="CountryCodeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Market_currencyId">
+          <End Type="URAXDEVModel.CurrencyDetail" Role="CurrencyDetail" Multiplicity="1" />
+          <End Type="URAXDEVModel.Market" Role="Market" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyDetail">
+              <PropertyRef Name="CurrencyId" />
+            </Principal>
+            <Dependent Role="Market">
+              <PropertyRef Name="currencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TempMarket_currencyId">
+          <End Type="URAXDEVModel.CurrencyDetail" Role="CurrencyDetail" Multiplicity="1" />
+          <End Type="URAXDEVModel.TempMarket" Role="TempMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CurrencyDetail">
+              <PropertyRef Name="CurrencyId" />
+            </Principal>
+            <Dependent Role="TempMarket">
+              <PropertyRef Name="currencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formula_VariableId">
+          <End Type="URAXDEVModel.Variable" Role="Variable" Multiplicity="1" />
+          <End Type="URAXDEVModel.Formula" Role="Formula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="VariableId" />
+            </Principal>
+            <Dependent Role="Formula">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormulaDefDependDetails_FormulaId">
+          <End Type="URAXDEVModel.Formula" Role="Formula" Multiplicity="1" />
+          <End Type="URAXDEVModel.FormulaDefinitionDependencyDetail" Role="FormulaDefinitionDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formula">
+              <PropertyRef Name="FormulaId" />
+            </Principal>
+            <Dependent Role="FormulaDefinitionDependencyDetail">
+              <PropertyRef Name="FormulaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormulaDefDependDetails_VariableId">
+          <End Type="URAXDEVModel.Variable" Role="Variable" Multiplicity="1" />
+          <End Type="URAXDEVModel.FormulaDefinitionDependencyDetail" Role="FormulaDefinitionDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="VariableId" />
+            </Principal>
+            <Dependent Role="FormulaDefinitionDependencyDetail">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LanguageDetails_LanguageId">
+          <End Type="URAXDEVModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="URAXDEVModel.LanguageDetail" Role="LanguageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="LanguageDetail">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LanguageDetails_TaxMasterId">
+          <End Type="URAXDEVModel.TaxMaster" Role="TaxMaster" Multiplicity="1" />
+          <End Type="URAXDEVModel.LanguageDetail" Role="LanguageDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxMaster">
+              <PropertyRef Name="TaxMasterId" />
+            </Principal>
+            <Dependent Role="LanguageDetail">
+              <PropertyRef Name="TaxMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LookUpDetails_GroupDetailsId">
+          <End Type="URAXDEVModel.LookupGroupDetail" Role="LookupGroupDetail" Multiplicity="0..1" />
+          <End Type="URAXDEVModel.LookUpDetail" Role="LookUpDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookupGroupDetail">
+              <PropertyRef Name="GroupDetailsId" />
+            </Principal>
+            <Dependent Role="LookUpDetail">
+              <PropertyRef Name="GroupDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LookUpGroup_TaxId">
+          <End Type="URAXDEVModel.Tax" Role="Tax" Multiplicity="1" />
+          <End Type="URAXDEVModel.LookUpGroup" Role="LookUpGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tax">
+              <PropertyRef Name="TaxId" />
+            </Principal>
+            <Dependent Role="LookUpGroup">
+              <PropertyRef Name="TaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LookupGroupDetail_LookUpGroupId">
+          <End Type="URAXDEVModel.LookUpGroup" Role="LookUpGroup" Multiplicity="1" />
+          <End Type="URAXDEVModel.LookupGroupDetail" Role="LookupGroupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LookUpGroup">
+              <PropertyRef Name="LookUpGroupId" />
+            </Principal>
+            <Dependent Role="LookupGroupDetail">
+              <PropertyRef Name="LookUpGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_LookupGroupDetail_LookupRangeTypeId">
+          <End Type="URAXDEVModel.ParameterDetail" Role="ParameterDetail" Multiplicity="0..1" />
+          <End Type="URAXDEVModel.LookupGroupDetail" Role="LookupGroupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterDetail">
+              <PropertyRef Name="ParameterId" />
+            </Principal>
+            <Dependent Role="LookupGroupDetail">
+              <PropertyRef Name="LookupRangeTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LookupGroupDetail_VariableId">
+          <End Type="URAXDEVModel.Variable" Role="Variable" Multiplicity="1" />
+          <End Type="URAXDEVModel.LookupGroupDetail" Role="LookupGroupDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="VariableId" />
+            </Principal>
+            <Dependent Role="LookupGroupDetail">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_PartnerCodeMapper_MarketId">
+          <End Type="URAXDEVModel.Market" Role="Market" Multiplicity="1" />
+          <End Type="URAXDEVModel.PartnerCodeMapper" Role="PartnerCodeMapper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="MarketId" />
+            </Principal>
+            <Dependent Role="PartnerCodeMapper">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaxMaster_MarketId">
+          <End Type="URAXDEVModel.Market" Role="Market" Multiplicity="1" />
+          <End Type="URAXDEVModel.TaxMaster" Role="TaxMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="MarketId" />
+            </Principal>
+            <Dependent Role="TaxMaster">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parameter__Param__1B9317B3">
+          <End Type="URAXDEVModel.ParameterGroupMaster" Role="ParameterGroupMaster" Multiplicity="1" />
+          <End Type="URAXDEVModel.ParameterDetail" Role="ParameterDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroupMaster">
+              <PropertyRef Name="ParameterGroupId" />
+            </Principal>
+            <Dependent Role="ParameterDetail">
+              <PropertyRef Name="ParameterGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Parameter__Param__373B3228">
+          <End Type="URAXDEVModel.ParameterGroupMaster" Role="ParameterGroupMaster" Multiplicity="1" />
+          <End Type="URAXDEVModel.ParameterDetail" Role="ParameterDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroupMaster">
+              <PropertyRef Name="ParameterGroupId" />
+            </Principal>
+            <Dependent Role="ParameterDetail">
+              <PropertyRef Name="ParameterGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__73852659">
+          <End Type="URAXDEVModel.Pno12" Role="Pno12" Multiplicity="1" />
+          <End Type="URAXDEVModel.Pno12FixedParameters" Role="Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12">
+              <PropertyRef Name="Pno12Id" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__756D6ECB">
+          <End Type="URAXDEVModel.Pno12" Role="Pno12" Multiplicity="1" />
+          <End Type="URAXDEVModel.Pno12FixedParameters" Role="Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12">
+              <PropertyRef Name="Pno12Id" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__7755B73D">
+          <End Type="URAXDEVModel.Pno12" Role="Pno12" Multiplicity="1" />
+          <End Type="URAXDEVModel.Pno12FixedParameters" Role="Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12">
+              <PropertyRef Name="Pno12Id" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__72910220">
+          <End Type="URAXDEVModel.Pno12ParameterDefinition" Role="Pno12ParameterDefinition" Multiplicity="1" />
+          <End Type="URAXDEVModel.Pno12FixedParameters" Role="Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12PdId" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12PdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__74794A92">
+          <End Type="URAXDEVModel.Pno12ParameterDefinition" Role="Pno12ParameterDefinition" Multiplicity="1" />
+          <End Type="URAXDEVModel.Pno12FixedParameters" Role="Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12PdId" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12PdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pno12Fixe__Pno12__76619304">
+          <End Type="URAXDEVModel.Pno12ParameterDefinition" Role="Pno12ParameterDefinition" Multiplicity="1" />
+          <End Type="URAXDEVModel.Pno12FixedParameters" Role="Pno12FixedParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12PdId" />
+            </Principal>
+            <Dependent Role="Pno12FixedParameters">
+              <PropertyRef Name="Pno12PdId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pno12ParameterDefinition_Pno12PtId">
+          <End Type="URAXDEVModel.Pno12ParameterType" Role="Pno12ParameterType" Multiplicity="1" />
+          <End Type="URAXDEVModel.Pno12ParameterDefinition" Role="Pno12ParameterDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12ParameterType">
+              <PropertyRef Name="Pno12PtId" />
+            </Principal>
+            <Dependent Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12PtId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Pno12ParameterDefinition_Pno12UomId">
+          <End Type="URAXDEVModel.Pno12UnitOfMeasurement" Role="Pno12UnitOfMeasurement" Multiplicity="1" />
+          <End Type="URAXDEVModel.Pno12ParameterDefinition" Role="Pno12ParameterDefinition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pno12UnitOfMeasurement">
+              <PropertyRef Name="Pno12UomId" />
+            </Principal>
+            <Dependent Role="Pno12ParameterDefinition">
+              <PropertyRef Name="Pno12UomId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PnoNumber_">
+          <End Type="URAXDEVModel.PnoGroupMaster" Role="PnoGroupMaster" Multiplicity="1" />
+          <End Type="URAXDEVModel.PnoNumber" Role="PnoNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PnoGroupMaster">
+              <PropertyRef Name="PnoGroupId" />
+            </Principal>
+            <Dependent Role="PnoNumber">
+              <PropertyRef Name="PnoGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PnoVariableMaster_PnoGroupId">
+          <End Type="URAXDEVModel.PnoGroupMaster" Role="PnoGroupMaster" Multiplicity="1" />
+          <End Type="URAXDEVModel.PnoVariableMaster" Role="PnoVariableMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PnoGroupMaster">
+              <PropertyRef Name="PnoGroupId" />
+            </Principal>
+            <Dependent Role="PnoVariableMaster">
+              <PropertyRef Name="PnoGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PnoParameter_PnoId">
+          <End Type="URAXDEVModel.PnoNumber" Role="PnoNumber" Multiplicity="1" />
+          <End Type="URAXDEVModel.PnoParameter" Role="PnoParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PnoNumber">
+              <PropertyRef Name="PnoId" />
+            </Principal>
+            <Dependent Role="PnoParameter">
+              <PropertyRef Name="PnoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PnoParameter_VariableMasterId">
+          <End Type="URAXDEVModel.PnoVariableMaster" Role="PnoVariableMaster" Multiplicity="1" />
+          <End Type="URAXDEVModel.PnoParameter" Role="PnoParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PnoVariableMaster">
+              <PropertyRef Name="VariableMasterId" />
+            </Principal>
+            <Dependent Role="PnoParameter">
+              <PropertyRef Name="VariableMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Tax_TaxVersionId">
+          <End Type="URAXDEVModel.TaxVersion" Role="TaxVersion" Multiplicity="1" />
+          <End Type="URAXDEVModel.Tax" Role="Tax" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxVersion">
+              <PropertyRef Name="TaxVersionId" />
+            </Principal>
+            <Dependent Role="Tax">
+              <PropertyRef Name="TaxVersionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Variable_TaxId">
+          <End Type="URAXDEVModel.Tax" Role="Tax" Multiplicity="1" />
+          <End Type="URAXDEVModel.Variable" Role="Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tax">
+              <PropertyRef Name="TaxId" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="TaxId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TaxVersion_TaxMasterId">
+          <End Type="URAXDEVModel.TaxMaster" Role="TaxMaster" Multiplicity="1" />
+          <End Type="URAXDEVModel.TaxVersion" Role="TaxVersion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaxMaster">
+              <PropertyRef Name="TaxMasterId" />
+            </Principal>
+            <Dependent Role="TaxVersion">
+              <PropertyRef Name="TaxMasterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRoles_UDetailsId">
+          <End Type="URAXDEVModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+          <End Type="URAXDEVModel.UserRole" Role="UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="UDetailsId" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UDetailsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="URAXDEVModelStoreContainer" CdmEntityContainer="URAXEntities">
+          <EntitySetMapping Name="CountryCodes">
+            <EntityTypeMapping TypeName="URAXDEVModel.CountryCode">
+              <MappingFragment StoreEntitySet="CountryCode">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="CultureInfoDetails" ColumnName="CultureInfoDetails" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode1" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryCodeId" ColumnName="CountryCodeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrencyDetails">
+            <EntityTypeMapping TypeName="URAXDEVModel.CurrencyDetail">
+              <MappingFragment StoreEntitySet="CurrencyDetails">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExceptionLogs">
+            <EntityTypeMapping TypeName="URAXDEVModel.ExceptionLog">
+              <MappingFragment StoreEntitySet="ExceptionLog">
+                <ScalarProperty Name="Logdate" ColumnName="Logdate" />
+                <ScalarProperty Name="ExceptionURL" ColumnName="ExceptionURL" />
+                <ScalarProperty Name="ExceptionSource" ColumnName="ExceptionSource" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+                <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
+                <ScalarProperty Name="Logid" ColumnName="Logid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Formulae">
+            <EntityTypeMapping TypeName="URAXDEVModel.Formula">
+              <MappingFragment StoreEntitySet="Formula">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+                <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+                <ScalarProperty Name="FormulaDefination" ColumnName="FormulaDefination" />
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+                <ScalarProperty Name="FormulaId" ColumnName="FormulaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormulaDefinitionDependencyDetails">
+            <EntityTypeMapping TypeName="URAXDEVModel.FormulaDefinitionDependencyDetail">
+              <MappingFragment StoreEntitySet="FormulaDefinitionDependencyDetails">
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+                <ScalarProperty Name="FormulaId" ColumnName="FormulaId" />
+                <ScalarProperty Name="FrmDepId" ColumnName="FrmDepId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ISO3166">
+            <EntityTypeMapping TypeName="URAXDEVModel.ISO3166">
+              <MappingFragment StoreEntitySet="ISO3166">
+                <ScalarProperty Name="Code_Standard" ColumnName="Code_Standard" />
+                <ScalarProperty Name="Parent_code" ColumnName="Parent_code" />
+                <ScalarProperty Name="Full_code" ColumnName="Full_code" />
+                <ScalarProperty Name="Local_code" ColumnName="Local_code" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+                <ScalarProperty Name="Territory" ColumnName="Territory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LanguageDetails">
+            <EntityTypeMapping TypeName="URAXDEVModel.LanguageDetail">
+              <MappingFragment StoreEntitySet="LanguageDetails">
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="TaxMasterId" ColumnName="TaxMasterId" />
+                <ScalarProperty Name="LanguageDetailsId" ColumnName="LanguageDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="URAXDEVModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LanguageCountrycode" ColumnName="LanguageCountrycode" />
+                <ScalarProperty Name="Language1" ColumnName="Language" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookUpDetails">
+            <EntityTypeMapping TypeName="URAXDEVModel.LookUpDetail">
+              <MappingFragment StoreEntitySet="LookUpDetails">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="GroupDetailsId" ColumnName="GroupDetailsId" />
+                <ScalarProperty Name="LookUpGroup" ColumnName="LookUpGroup" />
+                <ScalarProperty Name="LookUpId" ColumnName="LookUpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookUpGroups">
+            <EntityTypeMapping TypeName="URAXDEVModel.LookUpGroup">
+              <MappingFragment StoreEntitySet="LookUpGroup">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LookUpGroupName" ColumnName="LookUpGroupName" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="LookUpGroupId" ColumnName="LookUpGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LookupGroupDetails">
+            <EntityTypeMapping TypeName="URAXDEVModel.LookupGroupDetail">
+              <MappingFragment StoreEntitySet="LookupGroupDetail">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LookupRangeTypeId" ColumnName="LookupRangeTypeId" />
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+                <ScalarProperty Name="LookUpGroupId" ColumnName="LookUpGroupId" />
+                <ScalarProperty Name="GroupDetailsId" ColumnName="GroupDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Markets">
+            <EntityTypeMapping TypeName="URAXDEVModel.Market">
+              <MappingFragment StoreEntitySet="Market">
+                <ScalarProperty Name="FeatureLevelTax" ColumnName="FeatureLevelTax" />
+                <ScalarProperty Name="TaxTerritory" ColumnName="TaxTerritory" />
+                <ScalarProperty Name="SubdivisionCode" ColumnName="SubdivisionCode" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="TaxPartnerGroup" ColumnName="TaxPartnerGroup" />
+                <ScalarProperty Name="CountryCodeId" ColumnName="CountryCodeId" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialNews">
+            <EntityTypeMapping TypeName="URAXDEVModel.MaterialNew">
+              <MappingFragment StoreEntitySet="MaterialNews">
+                <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="PublishEndDate" ColumnName="PublishEndDate" />
+                <ScalarProperty Name="PublishStartDate" ColumnName="PublishStartDate" />
+                <ScalarProperty Name="ContentText" ColumnName="ContentText" />
+                <ScalarProperty Name="ContentHeading" ColumnName="ContentHeading" />
+                <ScalarProperty Name="ContentTypeId" ColumnName="ContentTypeId" />
+                <ScalarProperty Name="MNId" ColumnName="MNId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParameterDetails">
+            <EntityTypeMapping TypeName="URAXDEVModel.ParameterDetail">
+              <MappingFragment StoreEntitySet="ParameterDetails">
+                <ScalarProperty Name="ParameterCode" ColumnName="ParameterCode" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="ParameterGroupId" ColumnName="ParameterGroupId" />
+                <ScalarProperty Name="ParameterId" ColumnName="ParameterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParameterGroupMasters">
+            <EntityTypeMapping TypeName="URAXDEVModel.ParameterGroupMaster">
+              <MappingFragment StoreEntitySet="ParameterGroupMaster">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ParameterGroupName" ColumnName="ParameterGroupName" />
+                <ScalarProperty Name="ParameterGroupId" ColumnName="ParameterGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerCodeMappers">
+            <EntityTypeMapping TypeName="URAXDEVModel.PartnerCodeMapper">
+              <MappingFragment StoreEntitySet="PartnerCodeMapper">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+                <ScalarProperty Name="GCCTaxPartnerCode" ColumnName="GCCTaxPartnerCode" />
+                <ScalarProperty Name="PartnerCode" ColumnName="PartnerCode" />
+                <ScalarProperty Name="PartnerCodeMapperId" ColumnName="PartnerCodeMapperId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pno12">
+            <EntityTypeMapping TypeName="URAXDEVModel.Pno12">
+              <MappingFragment StoreEntitySet="Pno12">
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CarLine" ColumnName="CarLine" />
+                <ScalarProperty Name="ModelYear" ColumnName="ModelYear" />
+                <ScalarProperty Name="Pno121" ColumnName="Pno12" />
+                <ScalarProperty Name="Pno12Id" ColumnName="Pno12Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pno12FixedParameters">
+            <EntityTypeMapping TypeName="URAXDEVModel.Pno12FixedParameters">
+              <MappingFragment StoreEntitySet="Pno12FixedParameters">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ParameterValue" ColumnName="ParameterValue" />
+                <ScalarProperty Name="Pno12PdId" ColumnName="Pno12PdId" />
+                <ScalarProperty Name="Pno12Id" ColumnName="Pno12Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pno12ParameterDefinition">
+            <EntityTypeMapping TypeName="URAXDEVModel.Pno12ParameterDefinition">
+              <MappingFragment StoreEntitySet="Pno12ParameterDefinition">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Pno12UomId" ColumnName="Pno12UomId" />
+                <ScalarProperty Name="Pno12PtId" ColumnName="Pno12PtId" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="DefinitionName" ColumnName="DefinitionName" />
+                <ScalarProperty Name="Pno12PdId" ColumnName="Pno12PdId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pno12ParameterType">
+            <EntityTypeMapping TypeName="URAXDEVModel.Pno12ParameterType">
+              <MappingFragment StoreEntitySet="Pno12ParameterType">
+                <ScalarProperty Name="ParameterTypeDescription" ColumnName="ParameterTypeDescription" />
+                <ScalarProperty Name="ParameterTypeName" ColumnName="ParameterTypeName" />
+                <ScalarProperty Name="Pno12PtId" ColumnName="Pno12PtId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pno12UnitOfMeasurement">
+            <EntityTypeMapping TypeName="URAXDEVModel.Pno12UnitOfMeasurement">
+              <MappingFragment StoreEntitySet="Pno12UnitOfMeasurement">
+                <ScalarProperty Name="LongName" ColumnName="LongName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Pno12UomId" ColumnName="Pno12UomId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PnoGroupMasters">
+            <EntityTypeMapping TypeName="URAXDEVModel.PnoGroupMaster">
+              <MappingFragment StoreEntitySet="PnoGroupMaster">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="PnoGroupName" ColumnName="PnoGroupName" />
+                <ScalarProperty Name="PnoGroupId" ColumnName="PnoGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PnoNumbers">
+            <EntityTypeMapping TypeName="URAXDEVModel.PnoNumber">
+              <MappingFragment StoreEntitySet="PnoNumber">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="CarLine" ColumnName="CarLine" />
+                <ScalarProperty Name="ModelYear" ColumnName="ModelYear" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="PnoGroupId" ColumnName="PnoGroupId" />
+                <ScalarProperty Name="PnoId" ColumnName="PnoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PnoParameters">
+            <EntityTypeMapping TypeName="URAXDEVModel.PnoParameter">
+              <MappingFragment StoreEntitySet="PnoParameter">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="VariableMasterId" ColumnName="VariableMasterId" />
+                <ScalarProperty Name="PnoId" ColumnName="PnoId" />
+                <ScalarProperty Name="PnoParameterId" ColumnName="PnoParameterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PnoVariableMasters">
+            <EntityTypeMapping TypeName="URAXDEVModel.PnoVariableMaster">
+              <MappingFragment StoreEntitySet="PnoVariableMaster">
+                <ScalarProperty Name="GroupTypeId" ColumnName="GroupTypeId" />
+                <ScalarProperty Name="GuiName" ColumnName="GuiName" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Isactive" ColumnName="Isactive" />
+                <ScalarProperty Name="Datatype" ColumnName="Datatype" />
+                <ScalarProperty Name="VariableCode" ColumnName="VariableCode" />
+                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+                <ScalarProperty Name="PnoGroupId" ColumnName="PnoGroupId" />
+                <ScalarProperty Name="VariableMasterId" ColumnName="VariableMasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubdivisionCodes">
+            <EntityTypeMapping TypeName="URAXDEVModel.SubdivisionCode">
+              <MappingFragment StoreEntitySet="SubdivisionCode">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Descriptions" ColumnName="Descriptions" />
+                <ScalarProperty Name="LocalName" ColumnName="LocalName" />
+                <ScalarProperty Name="SubdivisionName" ColumnName="SubdivisionName" />
+                <ScalarProperty Name="SubdivisionCode1" ColumnName="SubdivisionCode" />
+                <ScalarProperty Name="CountryCodeId" ColumnName="CountryCodeId" />
+                <ScalarProperty Name="SubdivisionCodeId" ColumnName="SubdivisionCodeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Taxes">
+            <EntityTypeMapping TypeName="URAXDEVModel.Tax">
+              <MappingFragment StoreEntitySet="Tax">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TaxFlowId" ColumnName="TaxFlowId" />
+                <ScalarProperty Name="TaxVersionId" ColumnName="TaxVersionId" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxMasters">
+            <EntityTypeMapping TypeName="URAXDEVModel.TaxMaster">
+              <MappingFragment StoreEntitySet="TaxMaster">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="TaxPositionId" ColumnName="TaxPositionId" />
+                <ScalarProperty Name="TaxName" ColumnName="TaxName" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+                <ScalarProperty Name="TaxMasterId" ColumnName="TaxMasterId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxVersions">
+            <EntityTypeMapping TypeName="URAXDEVModel.TaxVersion">
+              <MappingFragment StoreEntitySet="TaxVersion">
+                <ScalarProperty Name="FeatureLevelTax" ColumnName="FeatureLevelTax" />
+                <ScalarProperty Name="TaxVersionStatusId" ColumnName="TaxVersionStatusId" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="TaxMasterId" ColumnName="TaxMasterId" />
+                <ScalarProperty Name="TaxVersionId" ColumnName="TaxVersionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TempMarkets">
+            <EntityTypeMapping TypeName="URAXDEVModel.TempMarket">
+              <MappingFragment StoreEntitySet="TempMarket">
+                <ScalarProperty Name="FeatureLevelTax" ColumnName="FeatureLevelTax" />
+                <ScalarProperty Name="TaxTerritory" ColumnName="TaxTerritory" />
+                <ScalarProperty Name="SubdivisionCode" ColumnName="SubdivisionCode" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+                <ScalarProperty Name="TaxPartnerGroup" ColumnName="TaxPartnerGroup" />
+                <ScalarProperty Name="CountryCodeId" ColumnName="CountryCodeId" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="URAXDEVModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="LoginDateUTC" ColumnName="LoginDateUTC" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="PersionalEMail" ColumnName="PersionalEMail" />
+                <ScalarProperty Name="OfficialEmail" ColumnName="OfficialEmail" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddeName" ColumnName="MiddeName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="CDSID" ColumnName="CDSID" />
+                <ScalarProperty Name="UDetailsId" ColumnName="UDetailsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="URAXDEVModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRoles">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Authorization" ColumnName="Authorization" />
+                <ScalarProperty Name="AccessLevelId" ColumnName="AccessLevelId" />
+                <ScalarProperty Name="CountryCodeID" ColumnName="CountryCodeID" />
+                <ScalarProperty Name="UDetailsId" ColumnName="UDetailsId" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Variables">
+            <EntityTypeMapping TypeName="URAXDEVModel.Variable">
+              <MappingFragment StoreEntitySet="Variable">
+                <ScalarProperty Name="TestValue" ColumnName="TestValue" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IslookUp" ColumnName="IslookUp" />
+                <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+                <ScalarProperty Name="UnitTypeId" ColumnName="UnitTypeId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+                <ScalarProperty Name="TaxId" ColumnName="TaxId" />
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

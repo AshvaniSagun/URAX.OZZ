@@ -1,0 +1,194 @@
+<div class="startPageAdmin">
+    <!--<div style="position:absolute;float: right;top:10px; right:0px;">
+        <a style="font-size:20px;margin-top:-18px;margin-right:-12px" (click)="BackToHome()"
+           class="ui-btn ui-icon-home ui-btn-icon-right fa fa-home  btn" title="Back to Home"></a>
+    </div>-->
+
+    <div class="startPageContent">
+        <div class="row start-align">
+
+            <div>
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 fields" >
+                    <div class="col-sm-12 col-xs-12 form-group heading">
+                        <label class="uraxcontent-heading" for="taxname"><b style="color:red;">*</b>Content Type :</label>
+                        <div class="styled-select ">
+                            <select  name="contentTypeId" [(ngModel)]="spam.contentTypeId" (change)="loadcontenttype($event.target.value,spam)">
+                                <option [value]="0">Please select Content Type</option>
+                                <option *ngFor="let type of ContentDropdown" value="{{type.parameterId}}">{{type.value}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--<div class="col-sm-12 col-xs-12 form-group heading">
+                        <label class="uraxcontent-heading" for="taxname"><b style="color:red;">*</b>Link URL:</label>
+                        <input style="margin-left: 0px; " type="text" [(ngModel)]="spam.imageUrl" pattern="https?://.+" name="imageUrl" class="inputbox">
+                    </div>-->
+                    <div class="col-sm-12 col-xs-12 form-group heading">
+                        <label class="uraxcontent-heading" for="taxname">Image Upload :</label>
+                        <input type='file' (change)="handleFileSelect($event)" id="fileButton" accept="image/jpeg">
+                    </div>
+                   
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 fields">
+                <div class="col-sm-12 col-xs-12 form-group heading">
+                    <label class="uraxcontent-heading"><b style="color:red;">*</b>Publish Start Date: </label>
+                    <div class="date-pickalign">
+                        <input maxlength="10" id="datepicker2" type="text" [ngModel]="spam.publishStartDate| date: 'yyyy-MM-dd'"  name="publishStartDate" class="inputbox" placeholder="YYYY-MM-DD">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-xs-12 form-group heading">
+                    <label class="uraxcontent-heading" for="taxname"><b style="color:red;">*</b>Active :</label>
+                    <div class="styled-select ">
+                        <select [(ngModel)]="spam.isActive" name="contentTypeId" (change)="Setvalue($event.target.value)">
+                            <option [value]="0">Please select Active</option>
+                            <option [value]="true">YES</option>
+                            <option [value]="false">NO</option>
+                        </select>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 fields">
+                
+                <div class="col-sm-12 col-xs-12 form-group heading">
+                    <label class="uraxcontent-heading">Publish End Date :</label>
+                    <div class="date-pickalign">
+                        <input maxlength="10" id="datepicker3" type="text" [ngModel]="spam.publishEndDate | date: 'yyyy-MM-dd'"   name="publishEndDate" class="inputbox" placeholder="YYYY-MM-DD">
+                    </div>
+                </div>
+                
+                <div class="col-sm-12 col-xs-12 form-group heading">
+                    <label class="uraxcontent-heading margin-left: 10px;" for="taxname"><b style="color:red;">*</b>Content Heading :</label>
+                    <input style="margin-left:0px;" type="text" placeholder="Add Content Heading" [(ngModel)]="spam.contentHeading" name="contentHeading">
+                    <!--<textarea placeholder="Add Content Heading" [(ngModel)]="spam.contentHeading" name="contentHeading"></textarea>-->
+                </div>
+
+                </div>
+
+            <div class="col-sm-12 col-xs-12 form-group content-heading">
+                <!--<label class="uraxcontent-heading margin-left: 10px;" for="taxname"><b style="color:red;">*</b>Content Heading :</label>
+                <input type="text" placeholder="Add Content Heading" [(ngModel)]="spam.contentHeading" name="contentHeading" class="inputbox startpagemargin">-->
+            </div>
+
+            <div class="col-sm-12 col-xs-12 form-group content-heading">
+                <label class="uraxcontent-heading" for="taxname"><b style="color:red;">*</b>Content Text :</label>
+                <textarea  class="startpagemargin" id="txtEditor" rows="2" style="margin-left: 12px;display:none" cols="20"  [(ngModel)]="spam.contextText" placeholder="Add Content Text" name="contextText"></textarea>
+            </div>
+            <div class="col-sm-12 col-xs-12 col-lg-12 action-btn">
+                <button class="btn" title="Save" (click)="SaveStartPageDetails(spam)">{{action}}</button>
+                <button class="btn" title="Cancel" (click)="cancel(spam)">Cancel</button>
+                <button class="btn" title="Preview" (click)="previewStart(spam)" id="previewbtn">Preview</button>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+    <label  id="result" *ngIf="false"></label>
+    <input id="result" type="hidden">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive spacing" style="/*! height:200px;*/overflow:auto;">
+            <table id="contentdisplay" class="table table-striped table-bordered">
+                <thead class="table-inverse">
+                    <tr>
+                        <th>Content Type</th>
+                        <th>Content Heading</th>
+                        <th>Content Text</th>
+                        <!--<th>Link Url</th>-->
+                        <th>Image Upload</th>
+                        <th>Publish Start Date</th>
+                        <th>Publish End Date</th>
+                        <th>Active</th>
+                        <th>Actions</th>
+                        <!--<th>Created on</th>
+                        <th>Created by</th>-->
+                        <th>Updated on</th>
+                        <th>Updated by</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let m of StartPageAdminlist; let i = index"  [class.active]="i == selectedRow">
+                        <td>
+                            <input type="text" hidden="hidden" [(ngModel)]="m.mnId" />
+
+                            <span>{{ m.contentTypeName }}</span>
+                        </td>
+                        <td>
+                            <div style="word-break: break-all;" [innerHTML]=" m.contentHeading"></div>
+                        </td>
+                        <td>
+                            <div style="word-break: break-all;" [innerHTML]="m.contextText"></div>
+                        </td>
+                        <!--<td>
+                            <span>{{ m.imageUrl }}</span>
+                        </td>-->
+                        <td>
+                            <img style="width:100px;height:100px;position: inherit;" [src]="m.ImageData">
+                            <!-- <div style="word-break: break-all;" [innerHTML]="m.ImageData"></div>-->
+
+                        </td>
+                        <td>
+                            <span>{{ m.publishStartDate | date: 'yyyy-MM-dd' }}</span>
+                        </td>
+                        <td>
+
+                            {{((m.publishEndDate !== '0001-01-01T00:00:00') ? (m.publishEndDate | date: 'yyyy-MM-dd') : '' )}}
+
+                        </td>
+
+
+
+                        <td>
+                            <span>
+                                <span *ngIf="m.isActive==true; else falsyTemplate">
+                                    YES
+                                </span>
+                                <ng-template #falsyTemplate>
+                                    NO
+                                </ng-template>
+                            </span>
+
+                            <!--<span>{{ m.isActive }}</span>-->
+                        </td>
+                        <td>
+                            <!--<a *ngIf="m.showsave" href="javascript:void(0)"
+                               (click)="SaveStartPageDetails(m)"
+                               class="fa fa-save" aria-hidden="true"></a>-->
+                            <a href="javascript:void(0)" *ngIf="!m.showEdit"
+                               (click)="editVariable(m,i)" title="Edits"
+                               class="fa fa-pencil" aria-hidden="true"></a>
+                            <a href="javascript:void(0)" title="Delete"
+                               (click)="DeleteStartPageDetails(m)" *ngIf="!m.cancel"
+                               class="fa fa-trash" aria-hidden="true"></a>
+                            <!--<a href="javascript:void(0)" *ngIf="m.showupdate"
+                               (click)="UpdateCountryData(m)"
+                               class="fa fa-check" aria-hidden="true"></a>-->
+                            <a href="javascript:void(0)" *ngIf="m.cancel"
+                               (click)="cancel(m)" title="Cancel"
+                               class="fa fa-close" aria-hidden="true"></a>
+                        </td>
+                        <!--<td>
+                            <div class="hideextra" style="width:99px">
+                                <span>  {{ m.createdOn | date: 'yyyy-MM-dd' }} </span>
+                            </div>
+
+                        </td>
+                        <td>
+                            <div class="hideextra" style="width:99px">
+                                <span>  {{ m.createdBy }} </span>
+                            </div>
+                        </td>-->
+                        <td>
+                            <div class="hideextra" style="width:99px">
+                                <span>  {{ m.updatedOn | date: 'yyyy-MM-dd' }} </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="hideextra" style="width:100px">
+                                <span>  {{ m.updatedBy }} </span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>

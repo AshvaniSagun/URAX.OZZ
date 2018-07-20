@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="fabric:/GCCMicroService" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="GCCServiceWebApi_InstanceCount" Value="1" />
+    <Parameter Name="DefaultCulture" Value="en-US" />
+    <Parameter Name="TENANT" Value="volvocars.onmicrosoft.com" />
+    <Parameter Name="DefaultCulture" Value="en-US" />
+    <Parameter Name="TENANT" Value="volvocars.onmicrosoft.com" />
+    <Parameter Name="AUDIENCE" Value="ca5d85db-8000-45f8-8394-c4dba2a761e4" />
+    <Parameter Name="ApplicationInsightsInstrumentationKey" Value="00611c42-ab8a-4efa-aae5-6a62279e2cc6" />
+    <Parameter Name="RedisCacheKey" Value="uraxtest.redis.cache.windows.net,password=PBD8Iqf3FYv86vfKOYzznB0RYiDeJs40ufAvH14HQCI=,ssl=True,abortConnect=False,allowAdmin=true" />
+  </Parameters>
+</Application>

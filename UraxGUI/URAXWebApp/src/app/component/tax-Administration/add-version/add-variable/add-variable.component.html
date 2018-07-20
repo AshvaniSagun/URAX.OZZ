@@ -1,0 +1,140 @@
+    					<!--Tab1-->
+<div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 no-padding table-responsive table-newwidth">
+    <div class="pane pane--table1">
+        <div class="pane-variable-hScroll">
+            <table class="table table-striped table-bordered">
+                <thead class="table-inverse">
+                    <tr>
+                        <th class="medium-columnwidth">Type</th>
+                        <th class="large-columnwidth">Name</th>
+                        <th class="small-columnwidth">Look-up</th>
+                        <th class="medium-columnwidth">Value</th>
+                        <th class="small-columnwidth">Unit</th>
+                        <th class="small-columnwidth">Test Value</th>
+                        <th class="small-columnwidth" *ngIf="taxstatus">Actions</th>
+                        <!--<th>Created on</th>
+                    <th>Created by</th>-->
+                        <th class="medium-columnwidth">Updated on</th>
+                        <th class="medium-columnwidth">Updated by</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="pane-variable-vScroll">
+                <table id="manage-taxterritory">
+                    <tbody>
+                        <tr *ngFor="let m of VariableDetails">
+                            <td class="medium-columnwidth">
+                                <div class="" style="width:105%">
+                                    <span *ngIf="!m.showEdit">{{ m.variableTypeName }}</span>
+                                    <select class="styled-select" *ngIf="m.showEdit" [(ngModel)]="m.variableTypeId" (change)="validate($event.target.value,m)">
+                                        <option [value]="0">Please select Type</option>
+                                        <option *ngFor="let type of variableType" value="{{type.parameterId}}">{{type.value}}</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="large-columnwidth">
+                                <div *ngIf="showinputdd" class="" style="width:100%;word-break: break-all">
+                                    <span *ngIf="!m.showEdit">{{ m.variableName }}</span>
+                                    <select class="styled-select"  *ngIf="m.showEdit" [(ngModel)]="m.variableName">
+                                        <option [value]="0">Please select Type</option>
+                                        <option *ngFor="let type of parmeterlist" value="{{type.variableName}}">{{type.variableName}}</option>
+                                    </select>
+                                </div>
+                                <div *ngIf="!showinputdd">
+                                    <div style="width:137px;word-break: break-all">
+                                        <input type="text" hidden="hidden" [(ngModel)]="m.variableId" />
+                                        <span *ngIf="!m.showEdit">{{ m.variableName }}</span>
+                                        <input style="width:125px" type="text" placeholder="Add Variable Name" maxlength="100" [(ngModel)]="m.variableName" *ngIf="m.showEdit" class="form-control">
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="small-columnwidth">
+                                <div class="hideextra hideextra-language" style="width:100px">
+                                    <span *ngIf="!m.showEdit">
+                                        <span *ngIf="m.isLookup">
+                                            YES
+                                        </span>
+                                        <span *ngIf="!m.isLookup">
+                                            NO
+                                        </span>
+                                    </span>
+                                    <select class="styled-select" [disabled]="setvalue" *ngIf="m.showEdit" [(ngModel)]="m.isLookup" (change)="setlookupid($event.target.value)">
+                                        <option [value]="0">Please select Look-up</option>
+                                        <option value="true" selected="selected">YES</option>
+                                        <option value="false">NO</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="medium-columnwidth">
+                                <div class="hideextra hideextra-language" style="width:90px">
+                                    <span *ngIf="!m.hide">  {{m.variableValue}}</span>
+                                    <input style="width:100%" (keypress)="isNumberKey($event)" placeholder="Enter The Value" [(ngModel)]="m.variableValue" *ngIf="m.hide" class="form-control">
+                                </div>
+
+                            </td>
+                            <td class="small-columnwidth">
+                                <div class="hideextra hideextra-language" style="width:100px">
+                                    <span *ngIf="!m.showEdit">{{ m.unitTypeName }}</span>
+                                    <select class="styled-select" *ngIf="m.showEdit" [(ngModel)]="m.unitTypeId" (change)="setunittype($event.target.value)">
+                                        <option [value]="0">Please select Unit</option>
+                                        <option *ngFor="let type of VariableUnit" value="{{type.parameterId}}">{{type.value}}</option>
+                                    </select>
+                                </div>
+
+                            </td>
+                            <td class="small-columnwidth">
+                                <div>
+                                    <div style="width:137px;word-break: break-all">
+                                        <span *ngIf="!m.showEdit">{{ m.testValue }}</span>
+                                        <input style="width:100px" type="text" placeholder="Add Test Value" maxlength="20" [(ngModel)]="m.testValue" *ngIf="m.showEdit" class="form-control">
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="small-columnwidth"  *ngIf="taxstatus" >
+                                <div class="hideextra"style="width:100px">
+                                    <a *ngIf="m.showsave" href="javascript:void(0)"
+                                       (click)="SaveVariables(m,VariableDetails)" title="Save Variable"
+                                       class="fa fa-save" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" *ngIf="!m.showEdit"
+                                       (click)="editVariable(m)" title="Edit Variable"
+                                       class="fa fa-pencil" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" title="Delete Variable"
+                                       (click)="DeleteVariable(m)" *ngIf="!m.cancel"
+                                       class="fa fa-trash" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" *ngIf="m.showupdate"
+                                       (click)="UpdateVariable(m,VariableDetails)" title="Update Variable"
+                                       class="fa fa-check" aria-hidden="true"></a>
+                                    <a href="javascript:void(0)" *ngIf="m.cancel"
+                                       (click)="cancel(m)" title="Cancel"
+                                       class="fa fa-close" aria-hidden="true"></a>
+                                </div>
+
+                            </td>
+                            <td class="medium-columnwidth">
+                                <div  style="width:100px">
+
+                                    <span>  {{ m.updatedOn | date: 'yyyy-MM-dd' }} </span>
+                                </div>
+
+                            </td>
+
+                            <td class="medium-columnwidth">
+                                <div style="width:100px">
+                                    <span>  {{ m.updatedBy }} </span>
+                                </div>
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 expand-newwidth">
+        <a href="javascript:void(0)" title="Add Variable"  *ngIf="taxstatus" (click)="addNew()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+    </div>
+
+
+
